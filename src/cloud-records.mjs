@@ -1,0 +1,3 @@
+export const recordKinds=['pipelines','contacts','organizations','products','deals','activities','events','goals','journeys','automationRuns','team'];
+export function cloudMeta(db){return{version:1,demo:false,activityTypes:db.activityTypes||[]};}
+export function recordChanges(before,after){const changes=[];for(const kind of recordKinds){const previous=new Map((before[kind]||[]).map(r=>[r.id,r])),next=new Map((after[kind]||[]).map(r=>[r.id,r]));for(const[id,data]of next){if(JSON.stringify(previous.get(id))!==JSON.stringify(data))changes.push({op:'upsert',kind,id,data});}for(const[id]of previous)if(!next.has(id))changes.push({op:'delete',kind,id});}return changes;}

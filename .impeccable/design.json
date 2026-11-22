@@ -1,0 +1,961 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T08:45:48.554023+00:00",
+  "title": "Design System: Poliniza CRM",
+  "extensions": {
+    "colorMeta": {
+      "purple": {
+        "role": "primary",
+        "displayName": "Purple",
+        "tonalRamp": [
+          "oklch(15% 0.09216 311.77)",
+          "oklch(26% 0.09216 311.77)",
+          "oklch(38% 0.09216 311.77)",
+          "oklch(50% 0.09216 311.77)",
+          "oklch(62% 0.09216 311.77)",
+          "oklch(74% 0.09216 311.77)",
+          "oklch(85% 0.09216 311.77)",
+          "oklch(95% 0.09216 311.77)"
+        ]
+      },
+      "purple-deep": {
+        "role": "primary",
+        "displayName": "Purple Deep",
+        "tonalRamp": [
+          "oklch(15% 0.07378 309.78)",
+          "oklch(26% 0.07378 309.78)",
+          "oklch(38% 0.07378 309.78)",
+          "oklch(50% 0.07378 309.78)",
+          "oklch(62% 0.07378 309.78)",
+          "oklch(74% 0.07378 309.78)",
+          "oklch(85% 0.07378 309.78)",
+          "oklch(95% 0.07378 309.78)"
+        ]
+      },
+      "purple-soft": {
+        "role": "primary",
+        "displayName": "Purple Soft",
+        "tonalRamp": [
+          "oklch(15% 0.01595 310.10)",
+          "oklch(26% 0.01595 310.10)",
+          "oklch(38% 0.01595 310.10)",
+          "oklch(50% 0.01595 310.10)",
+          "oklch(62% 0.01595 310.10)",
+          "oklch(74% 0.01595 310.10)",
+          "oklch(85% 0.01595 310.10)",
+          "oklch(95% 0.01595 310.10)"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Gold",
+        "tonalRamp": [
+          "oklch(15% 0.12031 87.84)",
+          "oklch(26% 0.12031 87.84)",
+          "oklch(38% 0.12031 87.84)",
+          "oklch(50% 0.12031 87.84)",
+          "oklch(62% 0.12031 87.84)",
+          "oklch(74% 0.12031 87.84)",
+          "oklch(85% 0.12031 87.84)",
+          "oklch(95% 0.12031 87.84)"
+        ]
+      },
+      "gold-soft": {
+        "role": "secondary",
+        "displayName": "Gold Soft",
+        "tonalRamp": [
+          "oklch(15% 0.02773 88.75)",
+          "oklch(26% 0.02773 88.75)",
+          "oklch(38% 0.02773 88.75)",
+          "oklch(50% 0.02773 88.75)",
+          "oklch(62% 0.02773 88.75)",
+          "oklch(74% 0.02773 88.75)",
+          "oklch(85% 0.02773 88.75)",
+          "oklch(95% 0.02773 88.75)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text",
+        "tonalRamp": [
+          "oklch(15% 0.03571 295.89)",
+          "oklch(26% 0.03571 295.89)",
+          "oklch(38% 0.03571 295.89)",
+          "oklch(50% 0.03571 295.89)",
+          "oklch(62% 0.03571 295.89)",
+          "oklch(74% 0.03571 295.89)",
+          "oklch(85% 0.03571 295.89)",
+          "oklch(95% 0.03571 295.89)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.02521 294.10)",
+          "oklch(26% 0.02521 294.10)",
+          "oklch(38% 0.02521 294.10)",
+          "oklch(50% 0.02521 294.10)",
+          "oklch(62% 0.02521 294.10)",
+          "oklch(74% 0.02521 294.10)",
+          "oklch(85% 0.02521 294.10)",
+          "oklch(95% 0.02521 294.10)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.01094 297.61)",
+          "oklch(26% 0.01094 297.61)",
+          "oklch(38% 0.01094 297.61)",
+          "oklch(50% 0.01094 297.61)",
+          "oklch(62% 0.01094 297.61)",
+          "oklch(74% 0.01094 297.61)",
+          "oklch(85% 0.01094 297.61)",
+          "oklch(95% 0.01094 297.61)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(26% 0.00000 89.88)",
+          "oklch(38% 0.00000 89.88)",
+          "oklch(50% 0.00000 89.88)",
+          "oklch(62% 0.00000 89.88)",
+          "oklch(74% 0.00000 89.88)",
+          "oklch(85% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "tonalRamp": [
+          "oklch(15% 0.00530 286.30)",
+          "oklch(26% 0.00530 286.30)",
+          "oklch(38% 0.00530 286.30)",
+          "oklch(50% 0.00530 286.30)",
+          "oklch(62% 0.00530 286.30)",
+          "oklch(74% 0.00530 286.30)",
+          "oklch(85% 0.00530 286.30)",
+          "oklch(95% 0.00530 286.30)"
+        ]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.14582 257.07)",
+          "oklch(26% 0.14582 257.07)",
+          "oklch(38% 0.14582 257.07)",
+          "oklch(50% 0.14582 257.07)",
+          "oklch(62% 0.14582 257.07)",
+          "oklch(74% 0.14582 257.07)",
+          "oklch(85% 0.14582 257.07)",
+          "oklch(95% 0.14582 257.07)"
+        ]
+      },
+      "blue-bg": {
+        "role": "tertiary",
+        "displayName": "Blue Bg",
+        "tonalRamp": [
+          "oklch(15% 0.01658 259.42)",
+          "oklch(26% 0.01658 259.42)",
+          "oklch(38% 0.01658 259.42)",
+          "oklch(50% 0.01658 259.42)",
+          "oklch(62% 0.01658 259.42)",
+          "oklch(74% 0.01658 259.42)",
+          "oklch(85% 0.01658 259.42)",
+          "oklch(95% 0.01658 259.42)"
+        ]
+      },
+      "green": {
+        "role": "tertiary",
+        "displayName": "Green",
+        "tonalRamp": [
+          "oklch(15% 0.09916 161.59)",
+          "oklch(26% 0.09916 161.59)",
+          "oklch(38% 0.09916 161.59)",
+          "oklch(50% 0.09916 161.59)",
+          "oklch(62% 0.09916 161.59)",
+          "oklch(74% 0.09916 161.59)",
+          "oklch(85% 0.09916 161.59)",
+          "oklch(95% 0.09916 161.59)"
+        ]
+      },
+      "green-bg": {
+        "role": "tertiary",
+        "displayName": "Green Bg",
+        "tonalRamp": [
+          "oklch(15% 0.01655 162.75)",
+          "oklch(26% 0.01655 162.75)",
+          "oklch(38% 0.01655 162.75)",
+          "oklch(50% 0.01655 162.75)",
+          "oklch(62% 0.01655 162.75)",
+          "oklch(74% 0.01655 162.75)",
+          "oklch(85% 0.01655 162.75)",
+          "oklch(95% 0.01655 162.75)"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Red",
+        "tonalRamp": [
+          "oklch(15% 0.14936 23.98)",
+          "oklch(26% 0.14936 23.98)",
+          "oklch(38% 0.14936 23.98)",
+          "oklch(50% 0.14936 23.98)",
+          "oklch(62% 0.14936 23.98)",
+          "oklch(74% 0.14936 23.98)",
+          "oklch(85% 0.14936 23.98)",
+          "oklch(95% 0.14936 23.98)"
+        ]
+      },
+      "red-bg": {
+        "role": "tertiary",
+        "displayName": "Red Bg",
+        "tonalRamp": [
+          "oklch(15% 0.01627 17.44)",
+          "oklch(26% 0.01627 17.44)",
+          "oklch(38% 0.01627 17.44)",
+          "oklch(50% 0.01627 17.44)",
+          "oklch(62% 0.01627 17.44)",
+          "oklch(74% 0.01627 17.44)",
+          "oklch(85% 0.01627 17.44)",
+          "oklch(95% 0.01627 17.44)"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Amber",
+        "tonalRamp": [
+          "oklch(15% 0.10430 80.96)",
+          "oklch(26% 0.10430 80.96)",
+          "oklch(38% 0.10430 80.96)",
+          "oklch(50% 0.10430 80.96)",
+          "oklch(62% 0.10430 80.96)",
+          "oklch(74% 0.10430 80.96)",
+          "oklch(85% 0.10430 80.96)",
+          "oklch(95% 0.10430 80.96)"
+        ]
+      },
+      "amber-bg": {
+        "role": "tertiary",
+        "displayName": "Amber Bg",
+        "tonalRamp": [
+          "oklch(15% 0.03932 91.20)",
+          "oklch(26% 0.03932 91.20)",
+          "oklch(38% 0.03932 91.20)",
+          "oklch(50% 0.03932 91.20)",
+          "oklch(62% 0.03932 91.20)",
+          "oklch(74% 0.03932 91.20)",
+          "oklch(85% 0.03932 91.20)",
+          "oklch(95% 0.03932 91.20)"
+        ]
+      },
+      "flow-mint-color": {
+        "role": "tertiary",
+        "displayName": "Flow Mint Color",
+        "tonalRamp": [
+          "oklch(15% 0.09042 172.37)",
+          "oklch(26% 0.09042 172.37)",
+          "oklch(38% 0.09042 172.37)",
+          "oklch(50% 0.09042 172.37)",
+          "oklch(62% 0.09042 172.37)",
+          "oklch(74% 0.09042 172.37)",
+          "oklch(85% 0.09042 172.37)",
+          "oklch(95% 0.09042 172.37)"
+        ]
+      },
+      "flow-mint-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Mint Soft",
+        "tonalRamp": [
+          "oklch(15% 0.03182 169.20)",
+          "oklch(26% 0.03182 169.20)",
+          "oklch(38% 0.03182 169.20)",
+          "oklch(50% 0.03182 169.20)",
+          "oklch(62% 0.03182 169.20)",
+          "oklch(74% 0.03182 169.20)",
+          "oklch(85% 0.03182 169.20)",
+          "oklch(95% 0.03182 169.20)"
+        ]
+      },
+      "flow-mint-band": {
+        "role": "tertiary",
+        "displayName": "Flow Mint Band",
+        "tonalRamp": [
+          "oklch(15% 0.05523 170.17)",
+          "oklch(26% 0.05523 170.17)",
+          "oklch(38% 0.05523 170.17)",
+          "oklch(50% 0.05523 170.17)",
+          "oklch(62% 0.05523 170.17)",
+          "oklch(74% 0.05523 170.17)",
+          "oklch(85% 0.05523 170.17)",
+          "oklch(95% 0.05523 170.17)"
+        ]
+      },
+      "flow-gold-color": {
+        "role": "tertiary",
+        "displayName": "Flow Gold Color",
+        "tonalRamp": [
+          "oklch(15% 0.10234 76.74)",
+          "oklch(26% 0.10234 76.74)",
+          "oklch(38% 0.10234 76.74)",
+          "oklch(50% 0.10234 76.74)",
+          "oklch(62% 0.10234 76.74)",
+          "oklch(74% 0.10234 76.74)",
+          "oklch(85% 0.10234 76.74)",
+          "oklch(95% 0.10234 76.74)"
+        ]
+      },
+      "flow-gold-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Gold Soft",
+        "tonalRamp": [
+          "oklch(15% 0.03320 88.06)",
+          "oklch(26% 0.03320 88.06)",
+          "oklch(38% 0.03320 88.06)",
+          "oklch(50% 0.03320 88.06)",
+          "oklch(62% 0.03320 88.06)",
+          "oklch(74% 0.03320 88.06)",
+          "oklch(85% 0.03320 88.06)",
+          "oklch(95% 0.03320 88.06)"
+        ]
+      },
+      "flow-gold-band": {
+        "role": "tertiary",
+        "displayName": "Flow Gold Band",
+        "tonalRamp": [
+          "oklch(15% 0.07881 88.12)",
+          "oklch(26% 0.07881 88.12)",
+          "oklch(38% 0.07881 88.12)",
+          "oklch(50% 0.07881 88.12)",
+          "oklch(62% 0.07881 88.12)",
+          "oklch(74% 0.07881 88.12)",
+          "oklch(85% 0.07881 88.12)",
+          "oklch(95% 0.07881 88.12)"
+        ]
+      },
+      "flow-blue-color": {
+        "role": "tertiary",
+        "displayName": "Flow Blue Color",
+        "tonalRamp": [
+          "oklch(15% 0.11273 254.48)",
+          "oklch(26% 0.11273 254.48)",
+          "oklch(38% 0.11273 254.48)",
+          "oklch(50% 0.11273 254.48)",
+          "oklch(62% 0.11273 254.48)",
+          "oklch(74% 0.11273 254.48)",
+          "oklch(85% 0.11273 254.48)",
+          "oklch(95% 0.11273 254.48)"
+        ]
+      },
+      "flow-blue-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Blue Soft",
+        "tonalRamp": [
+          "oklch(15% 0.01658 259.42)",
+          "oklch(26% 0.01658 259.42)",
+          "oklch(38% 0.01658 259.42)",
+          "oklch(50% 0.01658 259.42)",
+          "oklch(62% 0.01658 259.42)",
+          "oklch(74% 0.01658 259.42)",
+          "oklch(85% 0.01658 259.42)",
+          "oklch(95% 0.01658 259.42)"
+        ]
+      },
+      "flow-blue-band": {
+        "role": "tertiary",
+        "displayName": "Flow Blue Band",
+        "tonalRamp": [
+          "oklch(15% 0.04073 257.51)",
+          "oklch(26% 0.04073 257.51)",
+          "oklch(38% 0.04073 257.51)",
+          "oklch(50% 0.04073 257.51)",
+          "oklch(62% 0.04073 257.51)",
+          "oklch(74% 0.04073 257.51)",
+          "oklch(85% 0.04073 257.51)",
+          "oklch(95% 0.04073 257.51)"
+        ]
+      },
+      "flow-green-color": {
+        "role": "tertiary",
+        "displayName": "Flow Green Color",
+        "tonalRamp": [
+          "oklch(15% 0.10480 155.22)",
+          "oklch(26% 0.10480 155.22)",
+          "oklch(38% 0.10480 155.22)",
+          "oklch(50% 0.10480 155.22)",
+          "oklch(62% 0.10480 155.22)",
+          "oklch(74% 0.10480 155.22)",
+          "oklch(85% 0.10480 155.22)",
+          "oklch(95% 0.10480 155.22)"
+        ]
+      },
+      "flow-green-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Green Soft",
+        "tonalRamp": [
+          "oklch(15% 0.02320 153.46)",
+          "oklch(26% 0.02320 153.46)",
+          "oklch(38% 0.02320 153.46)",
+          "oklch(50% 0.02320 153.46)",
+          "oklch(62% 0.02320 153.46)",
+          "oklch(74% 0.02320 153.46)",
+          "oklch(85% 0.02320 153.46)",
+          "oklch(95% 0.02320 153.46)"
+        ]
+      },
+      "flow-green-band": {
+        "role": "tertiary",
+        "displayName": "Flow Green Band",
+        "tonalRamp": [
+          "oklch(15% 0.05319 155.29)",
+          "oklch(26% 0.05319 155.29)",
+          "oklch(38% 0.05319 155.29)",
+          "oklch(50% 0.05319 155.29)",
+          "oklch(62% 0.05319 155.29)",
+          "oklch(74% 0.05319 155.29)",
+          "oklch(85% 0.05319 155.29)",
+          "oklch(95% 0.05319 155.29)"
+        ]
+      },
+      "flow-violet-color": {
+        "role": "tertiary",
+        "displayName": "Flow Violet Color",
+        "tonalRamp": [
+          "oklch(15% 0.14843 303.36)",
+          "oklch(26% 0.14843 303.36)",
+          "oklch(38% 0.14843 303.36)",
+          "oklch(50% 0.14843 303.36)",
+          "oklch(62% 0.14843 303.36)",
+          "oklch(74% 0.14843 303.36)",
+          "oklch(85% 0.14843 303.36)",
+          "oklch(95% 0.14843 303.36)"
+        ]
+      },
+      "flow-violet-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Violet Soft",
+        "tonalRamp": [
+          "oklch(15% 0.02254 305.60)",
+          "oklch(26% 0.02254 305.60)",
+          "oklch(38% 0.02254 305.60)",
+          "oklch(50% 0.02254 305.60)",
+          "oklch(62% 0.02254 305.60)",
+          "oklch(74% 0.02254 305.60)",
+          "oklch(85% 0.02254 305.60)",
+          "oklch(95% 0.02254 305.60)"
+        ]
+      },
+      "flow-violet-band": {
+        "role": "tertiary",
+        "displayName": "Flow Violet Band",
+        "tonalRamp": [
+          "oklch(15% 0.05248 307.80)",
+          "oklch(26% 0.05248 307.80)",
+          "oklch(38% 0.05248 307.80)",
+          "oklch(50% 0.05248 307.80)",
+          "oklch(62% 0.05248 307.80)",
+          "oklch(74% 0.05248 307.80)",
+          "oklch(85% 0.05248 307.80)",
+          "oklch(95% 0.05248 307.80)"
+        ]
+      },
+      "flow-cyan-color": {
+        "role": "tertiary",
+        "displayName": "Flow Cyan Color",
+        "tonalRamp": [
+          "oklch(15% 0.08211 225.44)",
+          "oklch(26% 0.08211 225.44)",
+          "oklch(38% 0.08211 225.44)",
+          "oklch(50% 0.08211 225.44)",
+          "oklch(62% 0.08211 225.44)",
+          "oklch(74% 0.08211 225.44)",
+          "oklch(85% 0.08211 225.44)",
+          "oklch(95% 0.08211 225.44)"
+        ]
+      },
+      "flow-cyan-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Cyan Soft",
+        "tonalRamp": [
+          "oklch(15% 0.01850 227.28)",
+          "oklch(26% 0.01850 227.28)",
+          "oklch(38% 0.01850 227.28)",
+          "oklch(50% 0.01850 227.28)",
+          "oklch(62% 0.01850 227.28)",
+          "oklch(74% 0.01850 227.28)",
+          "oklch(85% 0.01850 227.28)",
+          "oklch(95% 0.01850 227.28)"
+        ]
+      },
+      "flow-cyan-band": {
+        "role": "tertiary",
+        "displayName": "Flow Cyan Band",
+        "tonalRamp": [
+          "oklch(15% 0.04048 224.64)",
+          "oklch(26% 0.04048 224.64)",
+          "oklch(38% 0.04048 224.64)",
+          "oklch(50% 0.04048 224.64)",
+          "oklch(62% 0.04048 224.64)",
+          "oklch(74% 0.04048 224.64)",
+          "oklch(85% 0.04048 224.64)",
+          "oklch(95% 0.04048 224.64)"
+        ]
+      },
+      "flow-rose-color": {
+        "role": "tertiary",
+        "displayName": "Flow Rose Color",
+        "tonalRamp": [
+          "oklch(15% 0.10881 5.96)",
+          "oklch(26% 0.10881 5.96)",
+          "oklch(38% 0.10881 5.96)",
+          "oklch(50% 0.10881 5.96)",
+          "oklch(62% 0.10881 5.96)",
+          "oklch(74% 0.10881 5.96)",
+          "oklch(85% 0.10881 5.96)",
+          "oklch(95% 0.10881 5.96)"
+        ]
+      },
+      "flow-rose-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Rose Soft",
+        "tonalRamp": [
+          "oklch(15% 0.02101 355.22)",
+          "oklch(26% 0.02101 355.22)",
+          "oklch(38% 0.02101 355.22)",
+          "oklch(50% 0.02101 355.22)",
+          "oklch(62% 0.02101 355.22)",
+          "oklch(74% 0.02101 355.22)",
+          "oklch(85% 0.02101 355.22)",
+          "oklch(95% 0.02101 355.22)"
+        ]
+      },
+      "flow-rose-band": {
+        "role": "tertiary",
+        "displayName": "Flow Rose Band",
+        "tonalRamp": [
+          "oklch(15% 0.04322 355.95)",
+          "oklch(26% 0.04322 355.95)",
+          "oklch(38% 0.04322 355.95)",
+          "oklch(50% 0.04322 355.95)",
+          "oklch(62% 0.04322 355.95)",
+          "oklch(74% 0.04322 355.95)",
+          "oklch(85% 0.04322 355.95)",
+          "oklch(95% 0.04322 355.95)"
+        ]
+      },
+      "flow-slate-color": {
+        "role": "tertiary",
+        "displayName": "Flow Slate Color",
+        "tonalRamp": [
+          "oklch(15% 0.03723 275.36)",
+          "oklch(26% 0.03723 275.36)",
+          "oklch(38% 0.03723 275.36)",
+          "oklch(50% 0.03723 275.36)",
+          "oklch(62% 0.03723 275.36)",
+          "oklch(74% 0.03723 275.36)",
+          "oklch(85% 0.03723 275.36)",
+          "oklch(95% 0.03723 275.36)"
+        ]
+      },
+      "flow-slate-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Slate Soft",
+        "tonalRamp": [
+          "oklch(15% 0.01119 269.55)",
+          "oklch(26% 0.01119 269.55)",
+          "oklch(38% 0.01119 269.55)",
+          "oklch(50% 0.01119 269.55)",
+          "oklch(62% 0.01119 269.55)",
+          "oklch(74% 0.01119 269.55)",
+          "oklch(85% 0.01119 269.55)",
+          "oklch(95% 0.01119 269.55)"
+        ]
+      },
+      "flow-slate-band": {
+        "role": "tertiary",
+        "displayName": "Flow Slate Band",
+        "tonalRamp": [
+          "oklch(15% 0.02149 268.42)",
+          "oklch(26% 0.02149 268.42)",
+          "oklch(38% 0.02149 268.42)",
+          "oklch(50% 0.02149 268.42)",
+          "oklch(62% 0.02149 268.42)",
+          "oklch(74% 0.02149 268.42)",
+          "oklch(85% 0.02149 268.42)",
+          "oklch(95% 0.02149 268.42)"
+        ]
+      },
+      "flow-plum-color": {
+        "role": "tertiary",
+        "displayName": "Flow Plum Color",
+        "tonalRamp": [
+          "oklch(15% 0.11857 320.13)",
+          "oklch(26% 0.11857 320.13)",
+          "oklch(38% 0.11857 320.13)",
+          "oklch(50% 0.11857 320.13)",
+          "oklch(62% 0.11857 320.13)",
+          "oklch(74% 0.11857 320.13)",
+          "oklch(85% 0.11857 320.13)",
+          "oklch(95% 0.11857 320.13)"
+        ]
+      },
+      "flow-plum-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Plum Soft",
+        "tonalRamp": [
+          "oklch(15% 0.02474 317.72)",
+          "oklch(26% 0.02474 317.72)",
+          "oklch(38% 0.02474 317.72)",
+          "oklch(50% 0.02474 317.72)",
+          "oklch(62% 0.02474 317.72)",
+          "oklch(74% 0.02474 317.72)",
+          "oklch(85% 0.02474 317.72)",
+          "oklch(95% 0.02474 317.72)"
+        ]
+      },
+      "flow-plum-band": {
+        "role": "tertiary",
+        "displayName": "Flow Plum Band",
+        "tonalRamp": [
+          "oklch(15% 0.04919 318.54)",
+          "oklch(26% 0.04919 318.54)",
+          "oklch(38% 0.04919 318.54)",
+          "oklch(50% 0.04919 318.54)",
+          "oklch(62% 0.04919 318.54)",
+          "oklch(74% 0.04919 318.54)",
+          "oklch(85% 0.04919 318.54)",
+          "oklch(95% 0.04919 318.54)"
+        ]
+      },
+      "flow-sage-color": {
+        "role": "tertiary",
+        "displayName": "Flow Sage Color",
+        "tonalRamp": [
+          "oklch(15% 0.05347 154.54)",
+          "oklch(26% 0.05347 154.54)",
+          "oklch(38% 0.05347 154.54)",
+          "oklch(50% 0.05347 154.54)",
+          "oklch(62% 0.05347 154.54)",
+          "oklch(74% 0.05347 154.54)",
+          "oklch(85% 0.05347 154.54)",
+          "oklch(95% 0.05347 154.54)"
+        ]
+      },
+      "flow-sage-soft": {
+        "role": "tertiary",
+        "displayName": "Flow Sage Soft",
+        "tonalRamp": [
+          "oklch(15% 0.01253 149.25)",
+          "oklch(26% 0.01253 149.25)",
+          "oklch(38% 0.01253 149.25)",
+          "oklch(50% 0.01253 149.25)",
+          "oklch(62% 0.01253 149.25)",
+          "oklch(74% 0.01253 149.25)",
+          "oklch(85% 0.01253 149.25)",
+          "oklch(95% 0.01253 149.25)"
+        ]
+      },
+      "flow-sage-band": {
+        "role": "tertiary",
+        "displayName": "Flow Sage Band",
+        "tonalRamp": [
+          "oklch(15% 0.02863 151.89)",
+          "oklch(26% 0.02863 151.89)",
+          "oklch(38% 0.02863 151.89)",
+          "oklch(50% 0.02863 151.89)",
+          "oklch(62% 0.02863 151.89)",
+          "oklch(74% 0.02863 151.89)",
+          "oklch(85% 0.02863 151.89)",
+          "oklch(95% 0.02863 151.89)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "T?tulo de p?gina."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "T?tulo geral de se??o."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base nativa da interface."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "R?tulos de campos e filtros."
+      }
+    },
+    "shadows": [
+      {
+        "name": "opportunity-hover",
+        "value": "0 5px 14px #27143512",
+        "purpose": "Eleva??o discreta da oportunidade no hover."
+      },
+      {
+        "name": "dialog",
+        "value": "0 18px 65px #1e0a3e30",
+        "purpose": "Sobreposi??o de edi??o e detalhe."
+      },
+      {
+        "name": "flow-node-rest",
+        "value": "0 3px 7px #27143508",
+        "purpose": "Separate sequential nodes from the canvas."
+      },
+      {
+        "name": "flow-node-hover",
+        "value": "0 4px 12px #27143512",
+        "purpose": "Interactive node hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "feedback",
+        "value": "150ms",
+        "purpose": "Sombra e deslocamento de oportunidade; opacidade e deslocamento de toast."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}",
+        "purpose": "Remover movimento quando solicitado pelo sistema."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1650px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1250px"
+      },
+      {
+        "name": "stack",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile",
+        "value": "600px"
+      },
+      {
+        "name": "automation-compact",
+        "value": "900px"
+      },
+      {
+        "name": "automation-mobile",
+        "value": "650px"
+      },
+      {
+        "name": "automation-list-compact",
+        "value": "1100px"
+      },
+      {
+        "name": "automation-list-records",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "A??o principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "A??o principal conforme a interface implementada.",
+      "html": "<button class=\"ds-primary\">Nova oportunidade</button>",
+      "css": ".ds-primary{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:1px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14px;font-weight:600;cursor:pointer;background:var(--purple);color:white;border-color:var(--purple)}.ds-primary:hover{background:var(--purple-deep)}.ds-primary:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "A??o secund?ria",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A??o secund?ria conforme a interface implementada.",
+      "html": "<button class=\"ds-secondary\">Importar planilha</button>",
+      "css": ".ds-secondary{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:1px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14px;font-weight:600;cursor:pointer;background:white;color:var(--text)}.ds-secondary:hover{background:#f7f5fa;border-color:#c8bed2}.ds-secondary:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "A??o simples",
+      "kind": "button",
+      "refersTo": "button-plain",
+      "description": "A??o simples conforme a interface implementada.",
+      "html": "<button class=\"ds-plain\">Ver atividades</button>",
+      "css": ".ds-plain{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:0;background:none;color:var(--purple);padding:5px;font-size:14px;font-weight:600;cursor:pointer}.ds-plain:hover{background:#f7f5fa}.ds-plain:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Campo conforme a interface implementada.",
+      "html": "<label class=\"ds-label\">Nome<input class=\"ds-input\" placeholder=\"Nome da oportunidade\"></label>",
+      "css": ".ds-label{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:block;font-size:12px;font-weight:600;color:var(--text)}.ds-input{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:block;margin-top:7px;width:100%;border:1px solid #d6d2df;border-radius:7px;padding:9px 11px;background:white;color:var(--text);font-size:14px}.ds-input::placeholder{color:#797482}.ds-input:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Etiqueta sem?ntica",
+      "kind": "chip",
+      "refersTo": "",
+      "description": "Etiqueta sem?ntica conforme a interface implementada.",
+      "html": "<span class=\"ds-tag\">Conclu?da</span>",
+      "css": ".ds-tag{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:inline-flex;font-size:10px;border-radius:5px;padding:3px 7px;background:var(--green-bg);color:var(--green);font-weight:600;white-space:nowrap}"
+    },
+    {
+      "name": "Painel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Painel conforme a interface implementada.",
+      "html": "<section class=\"ds-panel\"><h2>Pr?ximas atividades</h2><p>Contexto comercial do pipeline</p></section>",
+      "css": ".ds-panel{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:1px solid var(--line);background:white;border-radius:var(--radius);padding:20px;color:var(--text)}.ds-panel h2{margin:0;font-size:14px}.ds-panel p{margin:5px 0 0;color:var(--muted);font-size:11px}"
+    },
+    {
+      "name": "Oportunidade",
+      "kind": "card",
+      "refersTo": "deal-card",
+      "description": "Oportunidade conforme a interface implementada.",
+      "html": "<button class=\"ds-deal\"><strong>Projeto de demonstra??o</strong><small>Organiza??o fict?cia</small><b>R$ 8.500,00</b></button>",
+      "css": ".ds-deal{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:block;text-align:left;border:1px solid var(--line);background:white;border-radius:10px;padding:15px;color:var(--text);cursor:pointer;transition:box-shadow .15s,transform .15s}.ds-deal strong{font-size:13px;line-height:1.4}.ds-deal small{display:block;font-size:11px;color:var(--muted);margin-top:4px}.ds-deal b{display:block;font-size:18px;font-weight:650;letter-spacing:-.4px;margin:13px 0 10px;font-variant-numeric:tabular-nums}.ds-deal:hover{box-shadow:0 5px 14px #27143512;transform:translateY(-2px)}.ds-deal:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-deal{transition:none}}"
+    },
+    {
+      "name": "Navega??o superior",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Navega??o superior conforme a interface implementada.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#funil\" aria-current=\"page\">Funil</a><a href=\"#contatos\">Contatos</a></nav>",
+      "css": ".ds-nav{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:flex;gap:3px;background:var(--purple-deep);padding:12px}.ds-nav a{padding:13px 10px;border-radius:8px;font-size:12px;color:#e1d8e8;font-weight:550;text-decoration:none}.ds-nav a:hover{background:#ffffff12}.ds-nav a[aria-current]{background:#ffffff17;color:white}.ds-nav a:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Sele??o de relat?rio",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Sele??o de relat?rio conforme a interface implementada.",
+      "html": "<div class=\"ds-reports\" aria-label=\"Tipo de relat?rio\"><button aria-pressed=\"true\">Opera??o</button><button aria-pressed=\"false\">Comercial</button></div>",
+      "css": ".ds-reports{display:flex;gap:24px;border-bottom:1px solid var(--line)}.ds-reports button{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:0;background:none;border-radius:0;padding:10px 2px 13px;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer}.ds-reports button[aria-pressed=true]{color:var(--purple);box-shadow:inset 0 -2px var(--purple)}.ds-reports button:hover{background:#f7f5fa}.ds-reports button:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Automation action tile",
+      "kind": "button",
+      "description": "Library action with semantic color and explicit execution label.",
+      "html": "<button class=\"ds-flow-tile\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"4\" y=\"5\" width=\"16\" height=\"16\" rx=\"2\"/><path d=\"M8 2v6m8-6v6M4 10h16m-8 3v5m-3-2.5h6\"/></svg><span>Atividade</span><small>Execucao local</small></button>",
+      "css": ".ds-flow-tile{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;--flow-color:#14735d;--flow-soft:#d9f4e9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:14px 4px 11px;min-height:98px;background:white;border:1px solid var(--line);font-size:10px;border-radius:10px;font-weight:600;cursor:pointer}.ds-flow-tile:hover{background:var(--flow-soft);border-color:var(--flow-color)}.ds-flow-tile svg{width:27px;height:27px;fill:none;stroke:var(--flow-color);stroke-width:1.7}.ds-flow-tile small{font-weight:400;color:var(--muted)}.ds-flow-tile:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Connected automation node",
+      "kind": "custom",
+      "refersTo": "flow-node",
+      "description": "White node, semantic band and directional connector; independent reorder tools remain outside the node button.",
+      "html": "<div class=\"ds-flow-wrap\"><button class=\"ds-flow-node\"><span>Temporizador</span><strong>Somar dias</strong><small>Datas das atividades seguintes</small></button><svg class=\"ds-flow-link\" viewBox=\"0 0 30 57\" aria-hidden=\"true\"><path d=\"M15 0v53m-5-5 5 5 5-5\"/></svg></div>",
+      "css": ".ds-flow-wrap{width:300px;text-align:center}.ds-flow-node{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;--flow-color:#8b6114;--flow-band:#f7dfa5;display:flex;flex-direction:column;align-items:stretch;gap:0;background:white;border:1px solid var(--line);border-radius:12px;padding:0 0 16px;width:100%;font-weight:400;box-shadow:0 3px 7px #27143508;cursor:pointer}.ds-flow-node:hover{border-color:var(--flow-color);box-shadow:0 4px 12px #27143512}.ds-flow-node>span{padding:9px 11px;margin:7px 7px 13px;border-radius:7px;background:var(--flow-band);color:var(--flow-color);font-size:11px;font-weight:650}.ds-flow-node strong{font-size:13px;font-weight:600;margin:0 15px}.ds-flow-node small{font-size:10px;color:var(--muted);margin:6px 12px 0;line-height:1.5}.ds-flow-link{display:block;height:57px;width:30px;margin:auto;fill:none;stroke:#9a8caa;stroke-width:2}.ds-flow-node:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Conversation connection bar",
+      "kind": "custom",
+      "description": "Account context, textual connection status and explicit refresh; synthetic example only.",
+      "html": "<section class=\"ds-wa-bar\"><strong>WhatsApp de teste</strong><span class=\"ds-wa-state\"><i></i>Desconectado</span><p>Conecte para iniciar um teste manual.</p><button>Atualizar</button></section>",
+      "css": ".ds-wa-bar{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:white;color:var(--text);border:1px solid var(--line);border-radius:13px;padding:15px 18px}.ds-wa-bar strong{font-size:13px}.ds-wa-bar p{font-size:11px;color:var(--muted);flex:1;min-width:220px}.ds-wa-state{display:inline-flex;align-items:center;gap:5px;color:#795c17;background:#fff4d8;padding:4px 7px;border-radius:5px;font-size:10px;white-space:nowrap}.ds-wa-state i{height:6px;width:6px;border-radius:50%;background:currentColor}.ds-wa-bar button{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:0;background:none;color:var(--purple);padding:5px;font-size:11px;font-weight:600;cursor:pointer}.ds-wa-bar button:hover{background:#f7f5fa}.ds-wa-bar button:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}@media(max-width:650px){.ds-wa-bar{padding:13px;gap:10px}.ds-wa-bar p{min-width:0;width:100%;flex-basis:100%}}"
+    },
+    {
+      "name": "Manual conversation composer",
+      "kind": "custom",
+      "description": "Recipient label, draft field, explicit manual send and connection-dependent disabled state.",
+      "html": "<form class=\"ds-wa-composer\"><label for=\"ds-wa-text\">Mensagem para contato de teste</label><div><textarea id=\"ds-wa-text\" rows=\"2\" placeholder=\"Escreva sua mensagem de teste\"></textarea><button type=\"button\" disabled>Enviar</button></div><p>Reconecte para enviar. O texto pode ser preparado antes.</p></form>",
+      "css": ".ds-wa-composer{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;padding:16px 20px;background:white;border-top:1px solid var(--line);color:var(--text)}.ds-wa-composer label{font-size:11px;font-weight:600;display:block;margin-bottom:8px}.ds-wa-composer>div{display:flex;gap:10px;align-items:stretch}.ds-wa-composer textarea{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;min-width:0;width:100%;border:1px solid #d6d2df;border-radius:7px;padding:9px 11px;background:white;color:var(--text);min-height:60px;max-height:130px;resize:vertical;font-size:13px}.ds-wa-composer button{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;background:var(--purple);color:white;border:1px solid var(--purple);border-radius:8px;padding:9px 13px;font-weight:600;cursor:pointer}.ds-wa-composer button:hover{background:var(--purple-deep)}.ds-wa-composer button:disabled{opacity:.5;cursor:not-allowed}.ds-wa-composer p{font-size:10px;color:var(--muted);margin-top:9px;line-height:1.6}.ds-wa-composer textarea:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}.ds-wa-composer button:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}@media(max-width:650px){.ds-wa-composer{padding:12px}.ds-wa-composer>div{gap:7px}.ds-wa-composer button{font-size:12px;padding:8px}}"
+    },
+    {
+      "name": "Conversation message pair",
+      "kind": "custom",
+      "description": "Synthetic incoming/outgoing text with explicit status; no private messages.",
+      "html": "<div class=\"ds-wa-messages\"><div class=\"ds-wa-bubble\"><p>Mensagem ficticia de teste.</p><small>Recebida</small></div><div class=\"ds-wa-bubble ds-wa-out\"><p>Resposta ficticia preparada para demonstracao.</p><small>Envio nao confirmado</small></div></div>",
+      "css": ".ds-wa-messages{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;display:flex;flex-direction:column;gap:14px;padding:23px;background:#f5f4f9;color:var(--text)}.ds-wa-bubble{padding:12px 15px;border-radius:11px;max-width:78%;border:1px solid var(--line);font-size:13px;background:white;align-self:flex-start;overflow-wrap:anywhere}.ds-wa-bubble p{margin:0;white-space:pre-wrap;line-height:1.6}.ds-wa-bubble small{display:block;color:var(--muted);margin-top:7px;text-align:right}.ds-wa-out{background:#e5f2ea;border-color:#cee2d5;align-self:flex-end}@media(max-width:650px){.ds-wa-bubble{max-width:90%;font-size:12px}}"
+    },
+    {
+      "name": "Automation management record",
+      "kind": "custom",
+      "description": "Pipeline-scoped automation record; desktop table becomes labelled stacked fields at 760px.",
+      "html": "<table class=\"ds-flow-index\"><thead><tr><th>Automacao</th><th>Status</th><th>Acoes</th></tr></thead><tbody><tr><td data-label=\"Automacao\"><strong>Fluxo de teste</strong><small>2 blocos - 0 atividades criadas</small></td><td data-label=\"Status\"><span class=\"ds-flow-status\">Rascunho</span></td><td data-label=\"Acoes\"><div class=\"ds-flow-actions\"><button>Editar</button><button>Ativar</button><button>Excluir</button></div></td></tr></tbody></table>",
+      "css": ".ds-flow-index{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;width:100%;border-collapse:collapse;text-align:left;background:white;color:var(--text)}.ds-flow-index th{background:var(--canvas);font-size:12px;color:var(--muted);font-weight:600}.ds-flow-index th,.ds-flow-index td{padding:18px 20px;border-bottom:1px solid var(--line);vertical-align:middle}.ds-flow-index td{font-size:13px}.ds-flow-index strong{display:block;color:var(--purple);font-size:14px}.ds-flow-index small{display:block;margin-top:6px;color:var(--muted)}.ds-flow-index tbody tr:hover{background:var(--purple-soft)}.ds-flow-status{background:var(--amber-bg);color:var(--amber);font-size:10px;border-radius:5px;padding:3px 7px;font-weight:600}.ds-flow-actions{display:flex;gap:6px;flex-wrap:wrap}.ds-flow-actions button{font:inherit;font-size:12px;min-height:36px;border:1px solid var(--line);background:white;color:var(--text);border-radius:8px;padding:9px 13px;font-weight:600;cursor:pointer}.ds-flow-actions button:hover{background:#f7f5fa;border-color:#c8bed2}.ds-flow-actions button:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}.ds-flow-actions button:last-child{color:var(--red)}@media(max-width:1100px){.ds-flow-index th,.ds-flow-index td{padding:14px 10px}}@media(max-width:760px){.ds-flow-index thead{display:none}.ds-flow-index,.ds-flow-index tbody,.ds-flow-index tr,.ds-flow-index td{display:block;width:100%}.ds-flow-index tr{padding:12px 16px;border-bottom:1px solid var(--line)}.ds-flow-index td{padding:7px 0;border:0;overflow-wrap:anywhere}.ds-flow-index td:before{content:attr(data-label);display:block;font-size:11px;color:var(--muted);margin-bottom:5px}.ds-flow-index td:first-child:before{display:none}.ds-flow-actions{gap:10px}}"
+    },
+    {
+      "name": "Email history record",
+      "kind": "button",
+      "description": "Synthetic local history item with explicit acceptance state and reply count; selected record uses the incumbent purple-soft surface.",
+      "html": "<button class=\"ds-email-record\"><span><strong>Teste sintetico de email</strong><small>Para participante@example.com</small><small>22/11/2026</small></span><span><span class=\"ds-email-tag\">Enviado pelo Gmail</span><small>1 resposta registrada</small></span></button>",
+      "css": ".ds-email-record{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;background:var(--purple-soft);color:var(--text);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:18px 4px;text-align:left;white-space:normal;min-width:0;cursor:pointer}.ds-email-record>span{min-width:0}.ds-email-record>span:last-child{text-align:right;flex-shrink:0}.ds-email-record strong,.ds-email-record small{display:block;overflow-wrap:anywhere}.ds-email-record strong{font-size:14px;line-height:1.4}.ds-email-record small{font-size:11px;line-height:1.5;margin-top:5px;font-weight:400;color:var(--muted)}.ds-email-tag{display:inline-flex;font-size:10px;border-radius:5px;padding:3px 7px;background:var(--green-bg);color:var(--green);font-weight:600}.ds-email-record:hover{background:#f7f5fa}.ds-email-record:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}@media(max-width:900px){.ds-email-record{flex-wrap:wrap}.ds-email-record>span:last-child{text-align:left;flex-shrink:1}}"
+    },
+    {
+      "name": "Email confirmation preview",
+      "kind": "custom",
+      "description": "Synthetic review surface; the actual dialog additionally identifies sender and recipient before the explicit confirm/send action.",
+      "html": "<section class=\"ds-email-review\"><h3>Assunto de teste</h3><pre>Mensagem sintetica. Nenhum email real enviado.</pre><p>Ao confirmar, o email sera enviado pela conta conectada.</p><button type=\"button\">Confirmar e enviar</button></section>",
+      "css": ".ds-email-review{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;color:var(--text)}.ds-email-review h3{font-size:15px;margin-top:18px;overflow-wrap:anywhere}.ds-email-review pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:13px;line-height:1.7;padding:18px;background:var(--canvas);border-radius:8px;margin:18px 0;max-height:300px;overflow:auto}.ds-email-review p{font-size:11px;color:var(--muted);line-height:1.6}.ds-email-review button{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:1px solid var(--purple);background:var(--purple);color:white;border-radius:8px;padding:9px 13px;font-weight:600;cursor:pointer}.ds-email-review button:hover{background:var(--purple-deep)}.ds-email-review button:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    },
+    {
+      "name": "Gmail OAuth import region",
+      "kind": "custom",
+      "description": "Labelled drag-drop region with native picker alternative; synthetic empty example only. Runtime adds drag-over class, aria-busy and live import feedback.",
+      "html": "<section class=\"ds-gmail-drop\" role=\"region\" aria-label=\"Importar arquivo JSON OAuth\"><strong>Arraste o arquivo JSON para ca</strong><p>Arraste um arquivo da pasta Downloads. O conteudo nao aparece na tela.</p><label>Ou escolha o arquivo neste computador<input type=\"file\" accept=\".json,application/json\"></label><small>Use a opcao de arrastar se o seletor nao abrir.</small></section><p class=\"ds-gmail-feedback\" role=\"status\">Nenhum arquivo importado neste exemplo.</p>",
+      "css": ".ds-gmail-drop{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;padding:20px;border:1px dashed var(--purple);border-radius:8px;background:var(--purple-soft);color:var(--text);display:flex;flex-direction:column;gap:12px;transition:background .15s}.ds-gmail-drop p{font-size:12px;line-height:1.6}.ds-gmail-drop strong{color:var(--purple)}.ds-gmail-drop small{font-size:11px;line-height:1.5}.ds-gmail-drop label{font-size:12px;font-weight:600}.ds-gmail-drop input{display:block;width:100%;max-width:100%;min-width:0;margin-top:7px;white-space:normal;font:inherit;border:1px solid #d6d2df;border-radius:7px;padding:9px 11px;background:white;color:var(--text)}.ds-gmail-drop input:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}.ds-gmail-drop.is-dragover{background:var(--gold-soft);border-color:var(--purple)}.ds-gmail-drop[aria-busy=true]{opacity:.7}.ds-gmail-feedback{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:11px;color:var(--muted);line-height:1.6}@media(prefers-reduced-motion:reduce){.ds-gmail-drop{transition:none}}"
+    },
+    {
+      "name": "Online pilot access gate",
+      "kind": "custom",
+      "description": "Synthetic sign-in specimen for the implemented shared-base gate; actual emblem remains the approved asset.",
+      "html": "<section class=\"ds-cloud-login\"><div class=\"ds-cloud-brand\">Poliniza CRM</div><span class=\"ds-cloud-tag\">Acesso interno - piloto</span><h1>Entre no seu CRM</h1><p>Use a conta cadastrada pelo administrador.</p><form><label>Email<input type=\"email\" autocomplete=\"username\" required></label><label>Senha<input type=\"password\" autocomplete=\"current-password\" required></label><button type=\"button\">Entrar</button></form><button class=\"ds-cloud-recover\" type=\"button\">Esqueci minha senha</button><small>O CRM anterior permanece separado.</small></section>",
+      "css": ".ds-cloud-login{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;max-width:440px;margin:38px auto;padding:30px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:18px}.ds-cloud-brand{color:var(--purple);font-weight:650;font-size:20px}.ds-cloud-tag{background:var(--purple-soft);color:var(--purple);border-radius:5px;padding:3px 7px;font-size:10px}.ds-cloud-login h1{font-size:25px;margin:0}.ds-cloud-login>p{font-size:13px;line-height:1.65;color:var(--muted)}.ds-cloud-login form{display:flex;flex-direction:column;gap:18px}.ds-cloud-login label{display:block;font-size:12px;font-weight:600}.ds-cloud-login input{font:inherit;display:block;margin-top:7px;width:100%;min-width:0;border:1px solid #d6d2df;border-radius:7px;padding:9px 11px;background:white;color:var(--text)}.ds-cloud-login button{font:inherit;border:1px solid var(--purple);background:var(--purple);color:white;border-radius:8px;padding:9px 13px;font-weight:600;cursor:pointer}.ds-cloud-login button:hover{background:var(--purple-deep)}.ds-cloud-login button.ds-cloud-recover{background:none;border:0;color:var(--purple);padding:5px}.ds-cloud-login input:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}.ds-cloud-login button:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}.ds-cloud-login>small{font-size:11px;line-height:1.6;color:var(--muted)}@media(max-width:600px){.ds-cloud-login{margin:18px auto;padding:22px}.ds-cloud-login h1{font-size:23px}.ds-cloud-login button{min-height:44px}}"
+    },
+    {
+      "name": "Online messaging companion",
+      "kind": "card",
+      "description": "Explicit handoff from shared CRM to the local connector; no account or private content in this example.",
+      "html": "<section class=\"ds-cloud-companion\"><h2>Abrir atendimento local</h2><p>Os registros ficam online. Mantenha o conector ligado neste computador para enviar mensagens.</p><a href=\"http://127.0.0.1:4186/#emails\" target=\"_blank\" rel=\"noopener noreferrer\">Abrir Email local</a><p>Conversas locais ainda nao sao vinculadas automaticamente a base compartilhada.</p></section>",
+      "css": ".ds-cloud-companion{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;max-width:720px;background:white;color:var(--text);border:1px solid var(--line);border-radius:var(--radius);padding:20px}.ds-cloud-companion h2{font-size:18px;margin:0}.ds-cloud-companion>p{font-size:14px;line-height:1.7;margin:16px 0}.ds-cloud-companion a{display:inline-flex;background:var(--purple);color:white;border-radius:8px;padding:12px 18px;font-size:14px;font-weight:600;margin:4px 0;text-decoration:none}.ds-cloud-companion a:hover{background:var(--purple-deep)}.ds-cloud-companion a:focus-visible{outline:3px solid #a37ac5;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Poliniza — Funil Comercial",
+    "overview": "A identidade herdada combina navegação púrpura, emblema original e dourado discreto com uma área de trabalho clara. O sistema implementado é compacto, convencional e orientado à leitura de oportunidades, atividades e números em português brasileiro.\n\nA composição aprovada é o Funil Comercial da proposta A. A interface coloca contexto e ações acima do conteúdo; agrupa dados por superfícies, bordas suaves e hierarquia tipográfica. Esta documentação reconcilia a identidade herdada com public/index.html, public/styles.css e public/app.mjs; descreve o ambiente independente de validação local.",
+    "keyCharacteristics": [
+      "Navegação superior púrpura e conteúdo claro.",
+      "Dourado contido na identidade e em avisos.",
+      "Dados financeiros com algarismos tabulares.",
+      "Controles explícitos, compactos e convencionais."
+    ],
+    "rules": [
+      {
+        "name": "The Restrained Brand Rule",
+        "body": "Preserve o púrpura na navegação e nas ações; use o dourado com moderação, conforme a identidade confirmada.",
+        "section": "colors"
+      },
+      {
+        "name": "The Aligned Numbers Rule",
+        "body": "Preserve algarismos tabulares em valores, totais de etapa e colunas numéricas; alinhe números de tabela à direita.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Surface Rule",
+        "body": "Use borda e fundo para separar painéis em repouso; reserve a elevação para interação de oportunidade e sobreposição de diálogo.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep connection and message delivery states explicit in text, including unconfirmed sends.",
+      "**Do** preserve the manual-send boundary and the mobile conversation back action.",
+      "**Do** preserve action names, icons and draft labels alongside automation colors.",
+      "**Do** keep mobile automation selectors on full readable rows with actions below.",
+      "**Do** preserve o emblema original e a identidade púrpura e dourada contida.",
+      "**Do** mantenha rótulos, foco visível e estado selecionado acessível nos controles.",
+      "**Do** preserve o acesso compacto à agenda e a rolagem própria de quadros e tabelas.",
+      "**Do** use texto junto às cores semânticas e algarismos tabulares em dados financeiros."
+    ],
+    "donts": [
+      "**Don't** transforme o dourado em grandes superfícies metálicas.",
+      "**Don't** substitua os botões de relatório por abas sem implementar o comportamento correspondente.",
+      "**Don't** esconda pipeline, período ou a identificação do ambiente de demonstração."
+    ]
+  }
+}
