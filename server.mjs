@@ -5,19 +5,26 @@ import { fileURLToPath } from 'node:url';
 import {WhatsAppChannel} from './server/whatsapp.mjs';
 import {localAccess} from './server/local-access.mjs';
 import {GmailChannel} from './server/gmail.mjs';
+import {EmailTemplates} from './server/email-templates.mjs';
+import {StageEmailWorker} from './server/stage-email.mjs';
 const root = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.env.POLINIZA_NEXT_PORT || 4186);
 const access=localAccess(port);
 const whatsapp=new WhatsAppChannel({directory:resolve(root,'.runtime','whatsapp-private')});
 const gmail=new GmailChannel({directory:resolve(root,'.runtime','gmail-private'),port});
+const templates=new EmailTemplates(resolve(root,'.runtime','gmail-private'));
+const stageEmail=new StageEmailWorker({configPath:resolve(root,'deploy','public-cloud.json'),gmail,templates});
+setInterval(()=>stageEmail.tick(),30000).unref();
 const json=(response,status,value)=>{response.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});response.end(JSON.stringify(value));};
-async function body(request){let text='';for await(const chunk of request){text+=chunk;if(Buffer.byteLength(text)>16000)throw Error('O conteúdo enviado ultrapassa o limite local.');}try{return JSON.parse(text||'{}');}catch{throw Error('O conteúdo enviado não é válido.');}}
+async function body(request,limit=16000){let text='';for await(const chunk of request){text+=chunk;if(Buffer.byteLength(text)>limit)throw Error('O conteúdo enviado ultrapassa o limite local.');}try{return JSON.parse(text||'{}');}catch{throw Error('O conteúdo enviado não é válido.');}}
 async function api(request,response,path){
   if(!access.allowed(request))return json(response,403,{error:'Recarregue o CRM neste computador para abrir uma sessão local.'});
   if(request.method==='GET'){
     await gmail.ready;
     if(path==='/api/email/state')return json(response,200,{...gmail.state(),csrf:access.csrf});
     if(path==='/api/email/messages')return json(response,200,{messages:gmail.list()});
+    if(path==='/api/email/templates'){await templates.ready;return json(response,200,{templates:templates.list()});}
+    if(path==='/api/email/automation')return json(response,200,await stageEmail.overview());
     await whatsapp.ready;
     if(path==='/api/whatsapp/state')return json(response,200,{...whatsapp.state(),csrf:access.csrf});
     if(path==='/api/whatsapp/chats')return json(response,200,{chats:whatsapp.list()});
@@ -25,8 +32,15 @@ async function api(request,response,path){
   }
   if(request.method==='POST'){
     if(!access.writable(request))return json(response,403,{error:'A sessão local expirou. Recarregue a página antes de continuar.'});
-    const input=await body(request);
+    const input=await body(request,['/api/email/send','/api/email/templates'].includes(path)?2300000:16000);
     await gmail.ready;
+    if(path==='/api/email/templates')return json(response,200,await templates.upsert(input));
+    if(path==='/api/email/templates/remove')return json(response,200,await templates.remove(input.id));
+    if(path==='/api/email/automation/login')return json(response,200,await stageEmail.login(input));
+    if(path==='/api/email/automation/logout')return json(response,200,await stageEmail.logout());
+    if(path==='/api/email/automation/save')return json(response,200,await stageEmail.save(input));
+    if(path==='/api/email/automation/start')return json(response,200,await stageEmail.start());
+    if(path==='/api/email/automation/pause')return json(response,200,stageEmail.pause());
     if(path==='/api/email/config')return json(response,200,await gmail.configure(input));
     if(path==='/api/email/connect'){const result=await gmail.begin();response.setHeader('Set-Cookie',`poliniza_oauth=${result.binding}; HttpOnly; SameSite=Lax; Path=/api/email/oauth/callback; Max-Age=600`);return json(response,200,{url:result.url});}
     if(path==='/api/email/disconnect')return json(response,200,await gmail.disconnect());

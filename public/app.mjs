@@ -131,7 +131,7 @@ function render() {
   if(loadError){main.innerHTML=header('Os dados locais precisam de atenção','A base foi preservada.')+`<div class="hint">${esc(loadError)}</div>`;return;}
   if(state.route!=='conversas')conversations.stop();
   $('.demo-note').innerHTML=state.route==='conversas'?'<span class="status-dot"></span><strong>WhatsApp real · teste local</strong><span>Mensagens separadas da demonstração. Envio somente manual.</span>':demoNoteOriginal;
-  if(state.route==='emails')$('.demo-note').innerHTML='<span class="status-dot"></span><strong>Email real · teste local</strong><span>Envio individual, após revisão e confirmação.</span>';
+  if(state.route==='emails')$('.demo-note').innerHTML='<span class="status-dot"></span><strong>Email real · teste local</strong><span>Modelos, envio individual e regras por etapa.</span>';
   const views={formularios:()=>leadForms.render(),emails:()=>emails.render(),conversas:()=>conversations.render(),funil:renderBoard,contatos:renderContacts,atividades:renderActivities,calendario:renderCalendar,relatorios:renderReports,produtos:renderProducts,jornadas:renderJourneys,configuracoes:renderSettings};
   if(cloud?.enabled){
     $('.demo-note').innerHTML=`<strong>Base compartilhada</strong><span>${esc(cloud.email)}</span>${btn('cloud-reload','Atualizar base','plain')}${btn('cloud-logout','Sair','plain')}`;
