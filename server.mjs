@@ -57,7 +57,7 @@ const server = http.createServer(async (request, response) => {
     const target = resolve(base, relative);
     if (!target.startsWith(base + sep) || !(await stat(target)).isFile()) { response.writeHead(404).end('Arquivo não encontrado'); return; }
     const data = await readFile(target);
-    response.writeHead(200, { 'Content-Type': types[extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-store', 'Set-Cookie':access.cookie(), 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" });
+    response.writeHead(200, { 'Content-Type': types[extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-store', 'Set-Cookie':access.cookie(), 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://brasilapi.com.br; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" });
     response.end(request.method === 'HEAD' ? undefined : data);
   } catch(error) { if(request.url.startsWith('/api/'))return json(response,400,{error:/^(Informe|Conecte|Aguarde|Identificador|O número|Selecione|Escreva|O envio|A conversa|Não foi|O conteúdo)/.test(error.message)?error.message:'Não foi possível concluir a operação local.'});response.writeHead(404).end('Arquivo não encontrado'); }
 });

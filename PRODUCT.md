@@ -75,3 +75,7 @@ Antes de substituir o CRM anterior: preservar e conferir backup, mapear registro
 
 ## Formulários públicos — 22/11/2026
 Área Formulários com criação/edição, pipeline/etapa, pausa, link público e código para incorporar no site. Nome, organização, telefone, email e interesse obrigatórios; dificuldade e prazo opcionais. Envio cria contato e oportunidade aberta no Supabase sem depender de serviço local. Reaproveita contatos e negócios abertos do mesmo formulário, preserva detalhes existentes, registra campanha/respostas no histórico. Veja FORMULARIOS.md para instalação, limites e testes. Sem envios automáticos ou inscrição em marketing.
+
+
+## Consulta de CNPJ — 22/11/2026
+No formulário público e em Contatos → Novo/Editar, CNPJ opcional com botão Buscar empresa usa BrasilAPI no navegador, sem chave ou VPS. Razão social, fantasia, endereço, CNAE, situação e contatos públicos são sugestões editáveis. A consulta preenche somente campos vazios e mantém nome, email e telefone da pessoa. Contatos públicos da empresa têm campos próprios. CNPJ e dados empresariais persistem na base compartilhada; valores podem ser corrigidos ou apagados no cadastro. Sem consulta em lote. Validação numérica/alfanumérica, cache de sessão de dez minutos e intervalo mínimo de dois segundos. Falhas permitem cadastro manual. Não é consulta oficial em tempo real nem verificação de titularidade.

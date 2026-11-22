@@ -1,3 +1,4 @@
+import {cnpjFields,installCnpjLookup} from '/cnpj-lookup.mjs';
 import { createCloud } from '/cloud.mjs';
 import { createLeadForms } from '/lead-forms-admin.mjs';
 import { createConversations } from '/conversations.mjs';
@@ -8,6 +9,7 @@ import * as D from '/src/domain.mjs';
 import { demoDatabase } from '/src/demo.mjs';
 import { templates, previewImport, commitImport, csvExport, parseMoney } from '/src/imports.mjs';
 
+installCnpjLookup();
 const STORAGE = 'poliniza-crm-next.demo.v1';
 let cloud=null,cloudSaving=false;
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -203,11 +205,11 @@ function detail(id) {
 }
 
 function renderContacts() {
-  return header('Contatos','Pessoas e empresas, com informações no lugar certo.',btn('import','Importar','', 'data-kind="contacts"','download')+btn('new-contact','Novo contato','primary','','plus'))+`<div class="table-wrap"><table><thead><tr><th>Nome</th><th>Empresa</th><th>Email</th><th>Telefone</th><th>Origem</th><th></th></tr></thead><tbody>${db.contacts.map(c=>`<tr><td><strong>${esc(c.name)}</strong><small>${esc(c.role)}</small></td><td>${esc(c.organization||'—')}</td><td>${esc(c.email||'—')}</td><td>${esc(c.phone||'—')}</td><td>${esc(c.channel||'—')}</td><td>${btn('edit-contact','Editar','plain',`data-id="${c.id}"`)}${btn('remove-contact','Excluir','plain',`data-id="${c.id}"`)}</td></tr>`).join('')||'<tr><td colspan="6">Nenhum contato. Cadastre ou importe a sua planilha.</td></tr>'}</tbody></table></div><p class="help-text">Contatos são compartilhados entre os pipelines desta demonstração. Oportunidades e atividades mantêm o próprio pipeline.</p>`;
+  return header('Contatos','Pessoas e empresas, com informações no lugar certo.',btn('import','Importar','', 'data-kind="contacts"','download')+btn('new-contact','Novo contato','primary','','plus'))+`<div class="table-wrap"><table><thead><tr><th>Nome</th><th>Empresa</th><th>Email</th><th>Telefone</th><th>Origem</th><th></th></tr></thead><tbody>${db.contacts.map(c=>`<tr><td><strong>${esc(c.name)}</strong><small>${esc(c.role)}</small></td><td>${esc(c.organization||'—')}${c.cnpj?`<small>CNPJ ${esc(c.cnpj)}</small>`:''}</td><td>${esc(c.email||'—')}</td><td>${esc(c.phone||'—')}</td><td>${esc(c.channel||'—')}</td><td>${btn('edit-contact','Editar','plain',`data-id="${c.id}"`)}${btn('remove-contact','Excluir','plain',`data-id="${c.id}"`)}</td></tr>`).join('')||'<tr><td colspan="6">Nenhum contato. Cadastre ou importe a sua planilha.</td></tr>'}</tbody></table></div><p class="help-text">Contatos são compartilhados entre os pipelines desta demonstração. Oportunidades e atividades mantêm o próprio pipeline.</p>`;
 }
 function contactForm(id='') {
   const c=contact(id);
-  showDialog(c?'Editar contato':'Novo contato',`<div class="form-grid">${field('name','Nome completo',c?.name,'text',true,'required maxlength="120"')}${field('email','Email',c?.email,'email')}${field('phone','Telefone',c?.phone,'tel')}${field('organization','Empresa',c?.organization)}${field('role','Cargo',c?.role)}${field('channel','Origem',c?.channel,'text',true)}</div>`,values=>mutate(next=>{
+  showDialog(c?'Editar contato':'Novo contato',`<div class="form-grid">${cnpjFields(esc,c)}${field('name','Nome completo',c?.name,'text',true,'required maxlength="120"')}${field('email','Email',c?.email,'email')}${field('phone','Telefone',c?.phone,'tel')}${field('organization','Empresa',c?.organization)}${field('role','Cargo',c?.role)}${field('channel','Origem',c?.channel,'text',true)}</div>`,values=>mutate(next=>{
     if(c){const temp=D.createContact({...next,contacts:[]},values);Object.assign(next.contacts.find(x=>x.id===id),{...temp,id,createdAt:c.createdAt});}
     else D.createContact(next,values);
   },c?'Contato atualizado.':'Contato criado.'));

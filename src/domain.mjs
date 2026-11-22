@@ -1,3 +1,4 @@
+import {normalizeCnpj,validCnpj,businessDetails} from './cnpj.mjs';
 // Independent business rules. This module never connects to an external service.
 export const uid = () => globalThis.crypto.randomUUID();
 const clone = value => structuredClone(value);
@@ -132,6 +133,8 @@ export function createContact(db, input) {
   const email = String(input.email ?? '').trim().toLowerCase();
   check(!email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), 'O email não é válido.');
   const contact = { id: uid(), name, email, phone: String(input.phone ?? ''), organization: String(input.organization ?? ''), role: String(input.role ?? ''), channel: String(input.channel ?? ''), createdAt: timestamp() };
+  const cnpj=normalizeCnpj(input.cnpj);check(!cnpj||validCnpj(cnpj),'O CNPJ não é válido. Confira ou deixe o campo vazio.');
+  const business=businessDetails(input);if('cnpj' in input||cnpj||Object.values(business).some(Boolean)){contact.cnpj=cnpj;contact.business=business;}
   db.contacts.push(contact);
   return contact;
 }

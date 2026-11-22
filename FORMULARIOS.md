@@ -27,3 +27,7 @@ Administradores podem criar/editar formulários, alterar título/apresentação,
 Validação no banco, campo antirrobô, idempotência e até 10 envios/minuto e 200/24h por formulário. Isso não equivale a um CAPTCHA nem impede todo spam. Para escalar campanhas, evoluir para CAPTCHA validado no servidor, limitação por origem e observabilidade. Publicar aviso de privacidade adequado ao uso dos dados no site da empresa. Não há mensagens automáticas, agenda de atendimento prometida ou garantia de envio de campanha.
 
 Migração: `supabase/migrations/202611220002_lead_forms.sql`, somente no Supabase novo. Teste transacional com rollback: `supabase/tests/lead-forms.sql`.
+
+
+## Consulta de CNPJ — 22/11/2026
+No formulário público e em Contatos → Novo/Editar, CNPJ opcional com botão Buscar empresa usa BrasilAPI no navegador, sem chave ou VPS. Razão social, fantasia, endereço, CNAE, situação e contatos públicos são sugestões editáveis. A consulta preenche somente campos vazios e mantém nome, email e telefone da pessoa. Contatos públicos da empresa têm campos próprios. CNPJ e dados empresariais persistem na base compartilhada; valores podem ser corrigidos ou apagados no cadastro. Sem consulta em lote. Validação numérica/alfanumérica, cache de sessão de dez minutos e intervalo mínimo de dois segundos. Falhas permitem cadastro manual. Não é consulta oficial em tempo real nem verificação de titularidade.

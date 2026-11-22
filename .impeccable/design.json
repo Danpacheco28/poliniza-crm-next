@@ -778,6 +778,16 @@
         "success"
       ],
       "limits": "Public intake only; no table reads or automatic messages"
+    },
+    "cnpjLookup": {
+      "mode": "operate",
+      "surfaces": [
+        "contact dialog",
+        "public capture form"
+      ],
+      "behavior": "Explicit lookup; fill empty fields only; all values editable",
+      "identity": "Inherited Poliniza",
+      "fallback": "Manual entry on provider failure"
     }
   },
   "components": [
