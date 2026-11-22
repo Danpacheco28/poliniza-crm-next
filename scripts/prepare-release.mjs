@@ -19,6 +19,6 @@ async function include(path){
 async function directory(path){for(const entry of await readdir(join(root,path),{withFileTypes:true})){if(entry.isSymbolicLink())throw Error('Symlinks are not permitted in source export.');const next=join(path,entry.name);if(entry.isDirectory())await directory(next);else if(entry.isFile())await include(next);}}
 await mkdir(destination,{recursive:true});
 for(const folder of ['public','src','server','tests','scripts','.github','deploy','supabase'])await directory(folder);
-for(const file of ['package.json','package-lock.json','server.mjs','.gitignore','README.md','PRODUCT.md','DESIGN.md','VALIDACAO.md','PLANO-WHATSAPP.md','PUBLICACAO.md','.impeccable/design.json'])await include(file);
+for(const file of ['package.json','package-lock.json','server.mjs','.gitignore','README.md','PRODUCT.md','DESIGN.md','VALIDACAO.md','PLANO-WHATSAPP.md','PUBLICACAO.md','FORMULARIOS.md','.impeccable/design.json'])await include(file);
 await writeFile(join(destination,'SOURCE-MANIFEST.json'),JSON.stringify({generatedAt:new Date().toISOString(),purpose:'Source review only; not a production deployment',excluded:['.runtime','node_modules','.git','.env','credential files','private messages'],files:files.sort()},null,2));
 console.log(JSON.stringify({directory:relative(root,destination),files:files.length,privateRuntimeIncluded:false},null,2));

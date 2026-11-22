@@ -71,3 +71,7 @@ node scripts/prepare-release.mjs exporta somente código permitido para .release
 ## Migração pendente
 
 Antes de substituir o CRM anterior: preservar e conferir backup, mapear registros e vínculos, testar importação e totais, validar acessos e definir retorno. Não apagar nem sobrescrever o ambiente anterior nesta etapa.
+
+
+## Formulários públicos — 22/11/2026
+Área Formulários com criação/edição, pipeline/etapa, pausa, link público e código para incorporar no site. Nome, organização, telefone, email e interesse obrigatórios; dificuldade e prazo opcionais. Envio cria contato e oportunidade aberta no Supabase sem depender de serviço local. Reaproveita contatos e negócios abertos do mesmo formulário, preserva detalhes existentes, registra campanha/respostas no histórico. Veja FORMULARIOS.md para instalação, limites e testes. Sem envios automáticos ou inscrição em marketing.

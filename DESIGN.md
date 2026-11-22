@@ -305,3 +305,7 @@ The screenshots verify the access and companion UI with synthetic account contex
 
 ## Etiquetas de andamento — 20/11/2026
 Etiquetas suaves por etapa: violeta para entrada, azul para contato, ameixa para proposta e dourado para negociação; texto escuro com fundo claro. Contorno fino acompanha a cor, sem faixa lateral. A bolinha continua representando aberto/ganho/perdido. Etiqueta pode acompanhar etapa ou ser escolhida no formulário; uma mudança de etapa volta a usar o andamento da etapa de destino. “Proposta enviada” só aparece quando selecionada, não representa confirmação de envio por integração.
+
+
+## Captação pública e gestão de formulários
+A superfície pública herda Poliniza: emblema original, púrpura no botão, fundo claro e texto direto. Formulário central sem navegação do CRM, campos em duas colunas no desktop e uma no celular; rótulos persistentes, opcionais explícitos, autorização separada e confirmação de recebimento. Não mostra dados comerciais nem autenticação interna. A gestão integra a navegação do CRM com lista, destino explícito, estado Recebendo/Pausado, editor e código de incorporação. Preserva rascunho em erro e reaproveita a chave de envio em resultado de rede incerto.

@@ -90,3 +90,8 @@ Corrigido 403 ao entrar por link de outro site: somente GET de navegação princ
 
 ## Piloto compartilhado — 22/11/2026
 Testes SQL no novo Supabase confirmaram RLS, gravação por registro, concorrência e bloqueio de escrita direta; dados sintéticos revertidos por rollback. REST anônimo retornou 401. Interface simulada verificou login, alteração isolada, conflito com formulário preservado, saída e mobile sem overflow. Login real na página publicada ainda depende de validação do usuário.
+
+
+## Captação pública — 22/11/2026
+Migração instalada somente no projeto novo. Teste SQL real sob papel anon criou contato, oportunidade na etapa configurada e eventos; confirmou resposta sem IDs privados, atribuição, idempotência, reaproveitamento de contato/negócio e ausência de SELECT nas tabelas comerciais. Todos os dados sintéticos revertidos. Testes adicionais cobrem pausa, honeypot e quota por minuto. API real de configuração pública retornou 200 e somente nome/título/apresentação.
+Browser com transporte simulado validou campos obrigatórios, preservação após falha de rede, chave idempotente de reenvio, campanha, confirmação, desktop/mobile390 sem overflow ou exceções. Administração simulada confirmou criar/editar, destino, código de incorporação e pausa. Iframe móvel repassou UTMs e manteve altura estável. 34 testes Node passaram. Nenhum email ou WhatsApp enviado.

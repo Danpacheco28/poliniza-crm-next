@@ -1,4 +1,5 @@
 import { createCloud } from '/cloud.mjs';
+import { createLeadForms } from '/lead-forms-admin.mjs';
 import { createConversations } from '/conversations.mjs';
 import { createEmails } from '/emails.mjs';
 import { createAutomationEditor } from '/automation-editor.mjs';
@@ -46,7 +47,7 @@ try {
 } catch (error) { db = D.emptyDatabase(); loadError = 'Não foi possível abrir os dados locais. Nenhum dado anterior foi sobrescrito. ' + error.message; }
 
 const state = { pipelineId: db.pipelines[0]?.id, route: 'funil', query: '', status: 'open', mode: 'board', period: 'all', dashboard: 'operacao', activityFilter: 'all', month: new Date(new Date().getFullYear(),new Date().getMonth(),1), importPreview: null };
-const routes = [['funil','Funil','board'], ['conversas','Conversas','phone'], ['emails','Email','email'], ['contatos','Contatos','contacts'], ['atividades','Atividades','activity'], ['calendario','Calendário','calendar'], ['relatorios','Relatórios','reports'], ['produtos','Produtos','product'], ['jornadas','Automações','journey'], ['configuracoes','Configurações','settings']];
+const routes = [['funil','Funil','board'], ['conversas','Conversas','phone'], ['emails','Email','email'], ['contatos','Contatos','contacts'], ['atividades','Atividades','activity'], ['calendario','Calendário','calendar'], ['relatorios','Relatórios','reports'], ['produtos','Produtos','product'], ['jornadas','Automações','journey'], ['formularios','Formulários','contacts'], ['configuracoes','Configurações','settings']];
 const main = $('#main');
 const demoNoteOriginal=$('.demo-note').innerHTML;
 const modal = $('#modal');
@@ -128,7 +129,7 @@ function render() {
   if(state.route!=='conversas')conversations.stop();
   $('.demo-note').innerHTML=state.route==='conversas'?'<span class="status-dot"></span><strong>WhatsApp real · teste local</strong><span>Mensagens separadas da demonstração. Envio somente manual.</span>':demoNoteOriginal;
   if(state.route==='emails')$('.demo-note').innerHTML='<span class="status-dot"></span><strong>Email real · teste local</strong><span>Envio individual, após revisão e confirmação.</span>';
-  const views={emails:()=>emails.render(),conversas:()=>conversations.render(),funil:renderBoard,contatos:renderContacts,atividades:renderActivities,calendario:renderCalendar,relatorios:renderReports,produtos:renderProducts,jornadas:renderJourneys,configuracoes:renderSettings};
+  const views={formularios:()=>leadForms.render(),emails:()=>emails.render(),conversas:()=>conversations.render(),funil:renderBoard,contatos:renderContacts,atividades:renderActivities,calendario:renderCalendar,relatorios:renderReports,produtos:renderProducts,jornadas:renderJourneys,configuracoes:renderSettings};
   if(cloud?.enabled){
     $('.demo-note').innerHTML=`<strong>Base compartilhada</strong><span>${esc(cloud.email)}</span>${btn('cloud-reload','Atualizar base','plain')}${btn('cloud-logout','Sair','plain')}`;
     $('.brand small').textContent='Piloto online';
@@ -195,10 +196,10 @@ function detail(id) {
   const d=deal(id);if(!d)return;
   const p=db.pipelines.find(p=>p.id===d.pipelineId),c=contact(d.contactId),stage=p?.stages.find(s=>s.id===d.stageId);
   const at=p?.stages.findIndex(s=>s.id===d.stageId)??0;
-  const eventLabels={created:'Oportunidade criada',stage_changed:'Etapa alterada',pipeline_transferred:'Pipeline alterado',won:'Oportunidade ganha',lost:'Oportunidade perdida',reopened:'Oportunidade reaberta'};
+  const eventLabels={form_submitted:'Novo preenchimento do formulário',created:'Oportunidade criada',stage_changed:'Etapa alterada',pipeline_transferred:'Pipeline alterado',won:'Oportunidade ganha',lost:'Oportunidade perdida',reopened:'Oportunidade reaberta'};
   const history=db.events.filter(e=>e.dealId===id).sort((a,b)=>b.at.localeCompare(a.at));
   const tasks=db.activities.filter(a=>a.dealId===id&&!a.cancelledAt);
-  showDialog(esc(company(d.contactId)),`<p class="muted">${esc(d.title)}</p><div class="detail-money">${money(d.value)}</div>${tag(d.status==='won'?'Ganha':d.status==='lost'?'Perdida':stage?.name,d.status==='won'?'green':d.status==='lost'?'red':'')}<div class="stage-progress" aria-label="Etapa ${at+1} de ${p.stages.length}: ${esc(stage?.name)}">${p.stages.map((s,i)=>`<span class="${i<=at?'passed':''}" title="${esc(s.name)}"></span>`).join('')}</div><div class="detail-actions">${d.status==='open'?btn('won','Marcar como ganha','',`data-id="${id}"`,'check')+btn('lost','Marcar como perdida','danger',`data-id="${id}"`):btn('reopen','Reabrir oportunidade','',`data-id="${id}"`)}${btn('move','Mover / transferir','',`data-id="${id}"`)}${btn('edit-deal','Editar','',`data-id="${id}"`)}</div><dl class="detail-grid"><div><dt>Pipeline</dt><dd>${esc(p.name)}</dd></div><div><dt>Responsável</dt><dd>${esc(d.owner||'Não atribuído')}</dd></div><div><dt>Contato</dt><dd>${esc(c?.name||'Sem contato')}</dd></div><div><dt>Origem</dt><dd>${esc(d.channel||'Não informada')}</dd></div><div><dt>Email</dt><dd>${esc(c?.email||'Não informado')}</dd></div><div><dt>Previsão</dt><dd>${date(d.expectedAt)}</dd></div></dl>${d.lossReason?`<div class="hint"><strong>Motivo da perda</strong>${esc(d.lossReason)}</div>`:''}<div class="detail-section"><div class="panel-head"><h3>Próximas atividades</h3>${btn('new-activity','Adicionar','plain',`data-deal="${id}"`,'plus')}</div>${tasks.map(a=>`<div class="setting-row"><div><strong>${esc(a.title)}</strong><p>${date(a.scheduledAt)} · ${time(a.scheduledAt)} · ${esc(a.type)}</p></div>${a.completedAt?tag('Realizada','green'):btn('complete-detail-activity','Concluir','',`data-id="${a.id}" data-deal="${id}"`)}</div>`).join('')||'<p class="help-text">Nenhuma atividade vinculada.</p>'}</div>${d.notes?`<div class="detail-section"><h3>Anotações</h3><p class="help-text">${esc(d.notes)}</p></div>`:''}<div class="detail-section"><h3>Histórico da oportunidade</h3>${history.map(e=>`<div class="timeline-item">${esc(eventLabels[e.kind]||e.kind)}${e.kind==='pipeline_transferred'?`<small>${esc(db.pipelines.find(p=>p.id===e.fromPipelineId)?.name)} → ${esc(db.pipelines.find(p=>p.id===e.toPipelineId)?.name)}</small>`:''}${e.reason?`<small>${esc(e.reason)}</small>`:''}<small>${date(e.at)} · ${time(e.at)}</small></div>`).join('')}</div>`,null,'','detail-dialog');
+  showDialog(esc(company(d.contactId)),`<p class="muted">${esc(d.title)}</p><div class="detail-money">${money(d.value)}</div>${tag(d.status==='won'?'Ganha':d.status==='lost'?'Perdida':stage?.name,d.status==='won'?'green':d.status==='lost'?'red':'')}<div class="stage-progress" aria-label="Etapa ${at+1} de ${p.stages.length}: ${esc(stage?.name)}">${p.stages.map((s,i)=>`<span class="${i<=at?'passed':''}" title="${esc(s.name)}"></span>`).join('')}</div><div class="detail-actions">${d.status==='open'?btn('won','Marcar como ganha','',`data-id="${id}"`,'check')+btn('lost','Marcar como perdida','danger',`data-id="${id}"`):btn('reopen','Reabrir oportunidade','',`data-id="${id}"`)}${btn('move','Mover / transferir','',`data-id="${id}"`)}${btn('edit-deal','Editar','',`data-id="${id}"`)}</div><dl class="detail-grid"><div><dt>Pipeline</dt><dd>${esc(p.name)}</dd></div><div><dt>Responsável</dt><dd>${esc(d.owner||'Não atribuído')}</dd></div><div><dt>Contato</dt><dd>${esc(c?.name||'Sem contato')}</dd></div><div><dt>Origem</dt><dd>${esc(d.channel||'Não informada')}</dd></div><div><dt>Email</dt><dd>${esc(c?.email||'Não informado')}</dd></div><div><dt>Previsão</dt><dd>${date(d.expectedAt)}</dd></div></dl>${d.lossReason?`<div class="hint"><strong>Motivo da perda</strong>${esc(d.lossReason)}</div>`:''}<div class="detail-section"><div class="panel-head"><h3>Próximas atividades</h3>${btn('new-activity','Adicionar','plain',`data-deal="${id}"`,'plus')}</div>${tasks.map(a=>`<div class="setting-row"><div><strong>${esc(a.title)}</strong><p>${date(a.scheduledAt)} · ${time(a.scheduledAt)} · ${esc(a.type)}</p></div>${a.completedAt?tag('Realizada','green'):btn('complete-detail-activity','Concluir','',`data-id="${a.id}" data-deal="${id}"`)}</div>`).join('')||'<p class="help-text">Nenhuma atividade vinculada.</p>'}</div>${d.notes?`<div class="detail-section"><h3>Anotações</h3><p class="help-text">${esc(d.notes)}</p></div>`:''}<div class="detail-section"><h3>Histórico da oportunidade</h3>${history.map(e=>`<div class="timeline-item">${esc(eventLabels[e.kind]||e.kind)}${e.kind==='pipeline_transferred'?`<small>${esc(db.pipelines.find(p=>p.id===e.fromPipelineId)?.name)} → ${esc(db.pipelines.find(p=>p.id===e.toPipelineId)?.name)}</small>`:''}${e.reason?`<small>${esc(e.reason)}</small>`:''}${e.formId&&e.notes?`<p class="capture-history-notes">${esc(e.notes)}</p>`:''}<small>${date(e.at)} · ${time(e.at)}</small></div>`).join('')}</div>`,null,'','detail-dialog');
 }
 
 function renderContacts() {
@@ -348,6 +349,7 @@ const automation=createAutomationEditor({getDB:()=>db,pipelineId:()=>state.pipel
 
 const conversations=createConversations({esc,btn,icon,header,field,showDialog,toast,confirm,render});
 const emails=createEmails({esc,btn,header,field,showDialog,toast,confirm,render});
+const leadForms=createLeadForms({cloud:()=>cloud,db:()=>db,esc,render,toast});
 cloud=createCloud({esc,toast,onChange:render,onData:incoming=>{db=incoming||D.emptyDatabase();loadError='';state.pipelineId=db.pipelines.find(p=>p.id===state.pipelineId)?.id||db.pipelines[0]?.id;}});
 
 const actions={
@@ -391,6 +393,7 @@ const actions={
   ...conversations.actions,
   ...emails.actions,
   ...cloud.actions,
+  ...leadForms.actions,
 };
 async function reorder(el,offset) { const p=db.pipelines.find(p=>p.id===(el.dataset.pipeline||state.pipelineId));const ids=p.stages.map(s=>s.id),index=ids.indexOf(el.dataset.id),target=index+offset;if(target<0||target>=ids.length)return;[ids[index],ids[target]]=[ids[target],ids[index]];await mutate(next=>D.reorderStages(next,p.id,ids),'Ordem das etapas atualizada.');stageMenu(el.dataset.id,p.id); }
 

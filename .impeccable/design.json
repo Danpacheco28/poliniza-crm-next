@@ -762,7 +762,23 @@
         "name": "automation-list-records",
         "value": "760px"
       }
-    ]
+    ],
+    "leadCapture": {
+      "mode": "operate",
+      "identity": "Poliniza inherited",
+      "publicSurface": "lead-form.html",
+      "adminRoute": "#formularios",
+      "responsive": "Two columns on desktop; one on narrow screens",
+      "states": [
+        "loading",
+        "unavailable",
+        "validation",
+        "sending",
+        "error-preserves-draft",
+        "success"
+      ],
+      "limits": "Public intake only; no table reads or automatic messages"
+    }
   },
   "components": [
     {
