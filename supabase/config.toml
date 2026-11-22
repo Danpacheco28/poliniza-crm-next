@@ -1,0 +1,3 @@
+[functions.manage-users]
+# The handler validates the bearer token with Auth getUser and checks active membership.
+verify_jwt = false

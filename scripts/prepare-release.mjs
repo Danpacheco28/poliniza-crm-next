@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
 const destination=join(root,'.release','source-'+new Date().toISOString().replace(/[:.]/g,'-'));
 const files=[];
-const allowedExtensions=new Set(['.mjs','.cjs','.js','.html','.css','.png','.svg','.ico','.json','.md','.sql','.yml','.yaml','.example']);
+const allowedExtensions=new Set(['.mjs','.cjs','.js','.ts','.html','.css','.png','.svg','.ico','.json','.md','.sql','.toml','.yml','.yaml','.example']);
 const secretPatterns=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/GOCSPX-[A-Za-z0-9_-]{15,}/,/sb_secret_[A-Za-z0-9_-]{15,}/,/gh[pousr]_[A-Za-z0-9]{25,}/];
 async function include(path){
   const source=resolve(root,path);if(!source.startsWith(root+sep))throw Error('Source outside project.');
