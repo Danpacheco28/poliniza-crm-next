@@ -97,9 +97,15 @@ export function createDeal(db, input, at = timestamp()) {
     status: 'open', createdAt: at, updatedAt: at, closedAt: null,
     lossReason: '', notes: String(input.notes ?? ''),
   };
+  if('cnpj' in input||'organization' in input)setCompanyDetails(deal,input);
   db.deals.push(deal);
   event(db, deal, 'created', {}, at);
   return deal;
+}
+
+export function setCompanyDetails(target,input){
+  const cnpj=normalizeCnpj(input.cnpj);check(!cnpj||validCnpj(cnpj),'O CNPJ não é válido. Confira ou deixe o campo vazio.');
+  Object.assign(target,{organization:String(input.organization??'').trim().slice(0,160),cnpj,business:businessDetails(input)});
 }
 
 export function moveDeal(db, dealId, pipelineId, stageId, at = timestamp()) {

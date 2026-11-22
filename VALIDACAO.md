@@ -99,3 +99,11 @@ Browser com transporte simulado validou campos obrigatórios, preservação apó
 
 ## CNPJ — 22/11/2026
 Validação numérica e alfanumérica conforme Receita; testes de consulta indisponível, não encontrada, resposta inválida, CNPJ divergente e cache. Browser simulado confirmou preservação de contato, campos editáveis, envio de correções, validação opcional e mobile390 sem overflow/exceções. Cadastro local isolado confirmou salvar, reabrir e apagar dados empresariais. SQL real com rollback confirmou CNPJ e dados empresariais editados no contato/histórico, sem alterar dados pessoais nem permissões. Uma consulta pública de exemplo pelo navegador retornou 200; nenhuma empresa real gravada por esse teste. Nenhum email ou WhatsApp enviado.
+
+
+## Escopo corrigido pelo usuário — 22/11/2026
+O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.
+
+
+## Escopo corrigido pelo usuário — 22/11/2026
+O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.

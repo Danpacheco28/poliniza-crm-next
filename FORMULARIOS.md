@@ -30,4 +30,12 @@ Migração: `supabase/migrations/202611220002_lead_forms.sql`, somente no Supaba
 
 
 ## Consulta de CNPJ — 22/11/2026
-No formulário público e em Contatos → Novo/Editar, CNPJ opcional com botão Buscar empresa usa BrasilAPI no navegador, sem chave ou VPS. Razão social, fantasia, endereço, CNAE, situação e contatos públicos são sugestões editáveis. A consulta preenche somente campos vazios e mantém nome, email e telefone da pessoa. Contatos públicos da empresa têm campos próprios. CNPJ e dados empresariais persistem na base compartilhada; valores podem ser corrigidos ou apagados no cadastro. Sem consulta em lote. Validação numérica/alfanumérica, cache de sessão de dez minutos e intervalo mínimo de dois segundos. Falhas permitem cadastro manual. Não é consulta oficial em tempo real nem verificação de titularidade.
+Nos cadastros manuais de Contatos e Oportunidades → Novo/Editar, CNPJ opcional com botão Buscar empresa usa BrasilAPI no navegador, sem chave ou VPS. Razão social, fantasia, endereço, CNAE, situação e contatos públicos são sugestões editáveis. A consulta preenche somente campos vazios e mantém nome, email e telefone da pessoa. Contatos públicos da empresa têm campos próprios. CNPJ e dados empresariais persistem na base compartilhada; valores podem ser corrigidos ou apagados no cadastro. Sem consulta em lote. Validação numérica/alfanumérica, cache de sessão de dez minutos e intervalo mínimo de dois segundos. Falhas permitem cadastro manual. Não é consulta oficial em tempo real nem verificação de titularidade.
+
+
+## Escopo corrigido pelo usuário — 22/11/2026
+O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.
+
+
+## Escopo corrigido pelo usuário — 22/11/2026
+O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.

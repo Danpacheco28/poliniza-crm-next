@@ -783,7 +783,7 @@
       "mode": "operate",
       "surfaces": [
         "contact dialog",
-        "public capture form"
+        "opportunity dialog"
       ],
       "behavior": "Explicit lookup; fill empty fields only; all values editable",
       "identity": "Inherited Poliniza",

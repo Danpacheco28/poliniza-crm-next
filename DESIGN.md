@@ -313,3 +313,11 @@ A superfície pública herda Poliniza: emblema original, púrpura no botão, fun
 
 ## Consulta de empresa por CNPJ
 Extensão da identidade existente, sem nova direção visual. Linha CNPJ/Buscar empresa e feedback acessível; dados empresariais em seção expansível, duas colunas no desktop e uma no celular. Todos os campos continuam editáveis. O formulário não substitui dados de contato já digitados. Em erro, permite preenchimento manual. Campos empresariais não são apresentados como dados verificados pelo governo.
+
+
+## Escopo corrigido pelo usuário — 22/11/2026
+O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.
+
+
+## Escopo corrigido pelo usuário — 22/11/2026
+O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.
