@@ -49,3 +49,7 @@ Correção de permissões do servidor: aplicar também `202611220006_user_servic
 
 ## Recuperação de acesso sem email
 Quando uma pessoa não conseguir entrar e o envio de recuperação ainda não estiver configurado, um administrador pode usar **Usuários → Redefinir senha** ao lado de outro usuário ativo. Defina e confirme uma nova senha inicial com pelo menos 12 caracteres; compartilhe-a por canal privado e informe o endereço exato do CRM novo. A pessoa entra com a senha inicial e deve escolher sua senha pessoal antes de acessar os dados. Não envia email e não apaga contatos, negócios nem atribuições. O próprio administrador usa Alterar minha senha; a redefinição de outra conta é validada no servidor e auditada sem registrar a senha. Aplicar migração `202611230001_password_reset.sql` e atualizar a função `manage-users`.
+
+## 23/11/2026 — Atividades e calendário
+Unificados em #atividades com alternância Calendário/Lista; #calendario permanece como alias. Calendário Mês/Semana/Dia, navegação, seleção de data, cores por tipo e status escrito, detalhes/edição/conclusão e agendamento por dia. Filtros compartilhados e isolamento por pipeline. No celular, mês vira agenda vertical de dias com atividades e hoje. Sem migração SQL ou alteração de integrações.
+Validação: testes de datas locais, ano bissexto, navegação, filtros/pipeline/cancelamento e tipos; navegador com dados fictícios isolados verificou filtros, edição, conclusão, semana, alias e ausência de erros. Nenhum registro real foi usado ou alterado.

@@ -1,0 +1,10 @@
+export function dayKey(value){const d=value instanceof Date?value:new Date(value);return Number.isFinite(d.getTime())?`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`:'';}
+export function calendarDays(focus,kind='month'){
+ const start=new Date(focus.getFullYear(),focus.getMonth(),focus.getDate());let length=1;
+ if(kind==='month'){start.setDate(1);const offset=start.getDay(),count=new Date(start.getFullYear(),start.getMonth()+1,0).getDate();length=Math.ceil((offset+count)/7)*7;start.setDate(1-offset);}
+ if(kind==='week'){start.setDate(start.getDate()-start.getDay());length=7;}
+ return Array.from({length},(_,i)=>new Date(start.getFullYear(),start.getMonth(),start.getDate()+i));
+}
+export function shiftCalendar(focus,kind,direction){if(kind==='month'){const last=new Date(focus.getFullYear(),focus.getMonth()+direction+1,0).getDate();return new Date(focus.getFullYear(),focus.getMonth()+direction,Math.min(focus.getDate(),last));}return new Date(focus.getFullYear(),focus.getMonth(),focus.getDate()+direction*(kind==='week'?7:1));}
+export function activityTone(type){const t=String(type||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();if(t.includes('whatsapp'))return 'whatsapp';if(t.includes('email')||t.includes('e-mail'))return 'email';if(t.includes('ligacao')||t.includes('telefone'))return 'call';if(t.includes('reuniao'))return 'meeting';if(t.includes('proposta'))return 'proposal';return 'other';}
+export function filterActivities(activities,{pipelineId,status='all',owner='',type='',query='',now=new Date()}={},text=a=>a.title){const q=query.trim().toLocaleLowerCase('pt-BR');return activities.filter(a=>a.pipelineId===pipelineId&&!a.cancelledAt&&(!owner||a.owner===owner)&&(!type||a.type===type)&&(!q||String(text(a)).toLocaleLowerCase('pt-BR').includes(q))&&(status!=='pending'||!a.completedAt)&&(status!=='completed'||Boolean(a.completedAt))&&(status!=='overdue'||!a.completedAt&&new Date(a.scheduledAt)<now)).sort((a,b)=>Date.parse(a.scheduledAt)-Date.parse(b.scheduledAt)||a.title.localeCompare(b.title,'pt-BR'));}

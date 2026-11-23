@@ -1,3 +1,4 @@
+import { createActivityPlanner } from '/activity-planner.mjs';
 import {createUsers} from '/users.mjs';
 import {cnpjFields,installCnpjLookup} from '/cnpj-lookup.mjs';
 import { createCloud } from '/cloud.mjs';
@@ -50,7 +51,7 @@ try {
 } catch (error) { db = D.emptyDatabase(); loadError = 'Não foi possível abrir os dados locais. Nenhum dado anterior foi sobrescrito. ' + error.message; }
 
 const state = { pipelineId: db.pipelines[0]?.id, route: 'funil', query: '', status: 'open', mode: 'board', period: 'all', dashboard: 'operacao', activityFilter: 'all', month: new Date(new Date().getFullYear(),new Date().getMonth(),1), importPreview: null };
-const routes = [['funil','Funil','board'], ['conversas','Conversas','phone'], ['emails','Email','email'], ['contatos','Contatos','contacts'], ['atividades','Atividades','activity'], ['calendario','Calendário','calendar'], ['relatorios','Relatórios','reports'], ['produtos','Produtos','product'], ['jornadas','Automações','journey'], ['formularios','Formulários','contacts'], ['usuarios','Usuários','contacts'], ['configuracoes','Configurações','settings']];
+const routes = [['funil','Funil','board'], ['conversas','Conversas','phone'], ['emails','Email','email'], ['contatos','Contatos','contacts'], ['atividades','Atividades','activity'], ['relatorios','Relatórios','reports'], ['produtos','Produtos','product'], ['jornadas','Automações','journey'], ['formularios','Formulários','contacts'], ['usuarios','Usuários','contacts'], ['configuracoes','Configurações','settings']];
 const main = $('#main');
 const demoNoteOriginal=$('.demo-note').innerHTML;
 const modal = $('#modal');
@@ -126,6 +127,7 @@ function render() {
   if(gate){conversations.stop();$('#navigation').innerHTML='';$('.demo-note').hidden=true;main.innerHTML=gate;document.title='Acesso interno · Poliniza CRM';return;}
   $('.demo-note').hidden=false;
   if(!db.pipelines.some(p=>p.id===state.pipelineId))state.pipelineId=db.pipelines[0]?.id;
+  if(location.hash==='#calendario'){activityPlanner.openCalendar();history.replaceState(null,'','#atividades');}
   state.route=location.hash.slice(1)||'funil'; if(!routes.some(r=>r[0]===state.route))state.route='funil';
   $('#navigation').innerHTML=routes.map(([path,label,glyph])=>`<a href="#${path}" class="${state.route===path?'active':''}" ${state.route===path?'aria-current="page"':''}>${icon(glyph)}${label}</a>`).join('');
   document.title=`${routes.find(r=>r[0]===state.route)[1]} · Poliniza CRM novo`;
@@ -133,7 +135,7 @@ function render() {
   if(state.route!=='conversas')conversations.stop();
   $('.demo-note').innerHTML=state.route==='conversas'?'<span class="status-dot"></span><strong>WhatsApp real · teste local</strong><span>Mensagens separadas da demonstração. Envio somente manual.</span>':demoNoteOriginal;
   if(state.route==='emails')$('.demo-note').innerHTML='<span class="status-dot"></span><strong>Email real · teste local</strong><span>Modelos, envio individual e regras por etapa.</span>';
-  const views={usuarios:()=>users.render(),formularios:()=>leadForms.render(),emails:()=>emails.render(),conversas:()=>conversations.render(),funil:renderBoard,contatos:renderContacts,atividades:renderActivities,calendario:renderCalendar,relatorios:renderReports,produtos:renderProducts,jornadas:renderJourneys,configuracoes:renderSettings};
+  const views={usuarios:()=>users.render(),formularios:()=>leadForms.render(),emails:()=>emails.render(),conversas:()=>conversations.render(),funil:renderBoard,contatos:renderContacts,atividades:renderActivities,relatorios:renderReports,produtos:renderProducts,jornadas:renderJourneys,configuracoes:renderSettings};
   if(cloud?.enabled){
     $('.demo-note').innerHTML=`<strong>Base compartilhada</strong><span>${esc(cloud.email)}</span>${btn('cloud-reload','Atualizar base','plain')}${btn('cloud-logout','Sair','plain')}`;
     $('.brand small').textContent='Piloto online';
@@ -229,14 +231,7 @@ function productForm(id='') {
   },p?'Produto atualizado.':'Produto criado.'));
 }
 
-function renderActivities() {
-  let rows=activitiesForPipeline().sort((a,b)=>a.scheduledAt.localeCompare(b.scheduledAt));
-  if(state.activityFilter==='pending')rows=rows.filter(a=>!a.completedAt);
-  if(state.activityFilter==='overdue')rows=rows.filter(a=>activityStatus(a).color==='red');
-  if(state.activityFilter==='completed')rows=rows.filter(a=>a.completedAt);
-  const filter=`<label>Exibir<select data-filter="activity-status">${option([{id:'all',name:'Todas'},{id:'pending',name:'Pendentes'},{id:'overdue',name:'Em atraso'},{id:'completed',name:'Realizadas'}],state.activityFilter)}</select></label>`;
-  return header('Atividades','A próxima ação mantém o relacionamento em movimento.',btn('new-activity','Nova atividade','primary','','plus'))+toolbar(filter)+`<div class="table-wrap"><table><thead><tr><th>Atividade</th><th>Oportunidade</th><th>Quando</th><th>Responsável</th><th>Status</th><th></th></tr></thead><tbody>${rows.map(a=>`<tr><td><strong>${esc(a.title)}</strong><small>${esc(a.type)}</small></td><td>${esc(deal(a.dealId)?.title||'Sem oportunidade')}</td><td>${date(a.scheduledAt)}<small>${time(a.scheduledAt)}</small></td><td>${esc(a.owner||'Não atribuído')}</td><td>${tag(activityStatus(a).name,activityStatus(a).color)}</td><td>${a.completedAt?'':btn('complete-activity','Concluir','',`data-id="${a.id}"`)}${btn('edit-activity','Editar','plain',`data-id="${a.id}"`)}${btn('cancel-activity','Cancelar','plain',`data-id="${a.id}"`)}</td></tr>`).join('')||'<tr><td colspan="6">Nenhuma atividade neste filtro.</td></tr>'}</tbody></table></div>`;
-}
+function renderActivities(){return activityPlanner.render();}
 function activityForm({id='',dealId='',day='',type='',title=''}={}) {
   const a=db.activities.find(a=>a.id===id),d=deal(dealId||a?.dealId),pipelineId=d?.pipelineId||a?.pipelineId||state.pipelineId;
   if(!pipelineId)return toast('Crie um pipeline primeiro.');
@@ -247,17 +242,6 @@ function activityForm({id='',dealId='',day='',type='',title=''}={}) {
     else D.createActivity(next,input);
   },a?'Atividade atualizada.':'Atividade agendada.'));
 }
-function renderCalendar() {
-  const month=state.month;
-  const start=new Date(month.getFullYear(),month.getMonth(),1);start.setDate(start.getDate()-start.getDay());
-  const tasks=activitiesForPipeline();
-  const title=new Intl.DateTimeFormat('pt-BR',{month:'long',year:'numeric'}).format(month);
-  return header('Calendário','Agenda do pipeline selecionado.',btn('new-activity','Nova atividade','primary','','plus'))+toolbar(`<div class="grow"></div><div class="actions">${btn('calendar-prev','←','','aria-label="Mês anterior"')}<strong>${esc(title)}</strong>${btn('calendar-next','→','','aria-label="Próximo mês"')}${btn('calendar-today','Hoje')}</div>`)+`<div class="calendar"><div class="calendar-head">${['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(day=>`<span>${day}</span>`).join('')}</div><div class="calendar-grid">${Array.from({length:42},(_,i)=>{
-    const day=new Date(start);day.setDate(day.getDate()+i);const key=localDate(day),matches=tasks.filter(a=>localDate(a.scheduledAt)===key);
-    return `<div class="calendar-day ${day.getMonth()!==month.getMonth()?'outside':''} ${key===localDate()?'today':''}" data-action="calendar-day" data-day="${key}" tabindex="0" role="button" aria-label="Adicionar atividade em ${esc(date(key))}"><span class="day-number">${day.getDate()}</span>${matches.slice(0,3).map(a=>`<div class="calendar-event ${a.completedAt?'done':''}" title="${esc(a.title)}">${time(a.scheduledAt)} ${esc(a.title)}</div>`).join('')}${matches.length>3?`<small>+${matches.length-3} atividades</small>`:''}</div>`;
-  }).join('')}</div></div><p class="help-text">Clique em um dia para agendar. Edite ou conclua atividades na área Atividades.</p>`;
-}
-
 function renderReports() {
   const r=report();if(!r)return header('Relatórios','Crie um pipeline para começar.');
   const filters=`<label>Período<select data-filter="period">${option([{id:'all',name:'Todo o histórico'},{id:'month',name:'Este mês'},{id:'30',name:'Últimos 30 dias'}],state.period)}</select></label><div class="grow"></div>${btn('export-report','Exportar resumo','','','download')}`;
@@ -350,6 +334,7 @@ function importForm(kind='contacts') {
   });
 }
 
+const activityPlanner=createActivityPlanner({getDB:()=>db,pipelineId:()=>state.pipelineId,dealCompany,esc,btn,icon,header,toolbar,tag,render,showDialog,confirm,newActivity:activityForm,completeActivity:id=>mutate(next=>D.completeActivity(next,id),'Atividade concluída.'),cancelActivity:id=>mutate(next=>{next.activities.find(a=>a.id===id).cancelledAt=new Date().toISOString();},'Atividade cancelada.'),closeDialog:()=>modal.close()});
 const automation=createAutomationEditor({getDB:()=>db,pipelineId:()=>state.pipelineId,esc,btn,field,selectField,showDialog,mutate,toast,header,toolbar,tag,confirm,render});
 
 const conversations=createConversations({esc,btn,icon,header,field,showDialog,toast,confirm,render});
@@ -359,6 +344,7 @@ const leadForms=createLeadForms({cloud:()=>cloud,db:()=>db,esc,render,toast});
 cloud=createCloud({esc,toast,onChange:render,onData:incoming=>{db=incoming||D.emptyDatabase();loadError='';state.pipelineId=db.pipelines.find(p=>p.id===state.pipelineId)?.id||db.pipelines[0]?.id;}});
 
 const actions={
+  ...activityPlanner.actions,
   'quick-email':el=>activityForm({dealId:el.dataset.id,type:'Email',title:'Enviar email'}),
   'quick-whatsapp':el=>activityForm({dealId:el.dataset.id,type:'WhatsApp',title:'Entrar em contato pelo WhatsApp'}),
   'quick-note':el=>showDialog('Adicionar anotação',`<label class="field"><span>Anotação da oportunidade</span><textarea name="note" required maxlength="5000"></textarea></label>`,values=>mutate(next=>{const target=next.deals.find(d=>d.id===el.dataset.id);const note=values.note.trim();if(!note)throw new Error('Escreva uma anotação.');target.notes=[target.notes,localDate()+' · '+note].filter(Boolean).join('\n\n');},'Anotação adicionada.')),
@@ -382,7 +368,6 @@ const actions={
   'complete-activity':el=>mutate(next=>D.completeActivity(next,el.dataset.id),'Atividade concluída.'),
   'complete-detail-activity':async el=>{await mutate(next=>D.completeActivity(next,el.dataset.id),'Atividade concluída.');detail(el.dataset.deal);},
   'cancel-activity':el=>confirm('Cancelar atividade?','Ela sairá das pendências e dos indicadores desta demonstração.',()=>mutate(next=>{next.activities.find(a=>a.id===el.dataset.id).cancelledAt=new Date().toISOString();},'Atividade cancelada.')),
-  'calendar-prev':()=>{state.month=new Date(state.month.getFullYear(),state.month.getMonth()-1,1);render();},'calendar-next':()=>{state.month=new Date(state.month.getFullYear(),state.month.getMonth()+1,1);render();},'calendar-today':()=>{state.month=new Date(new Date().getFullYear(),new Date().getMonth(),1);render();},'calendar-day':el=>activityForm({day:el.dataset.day}),
   'dashboard':el=>{state.dashboard=el.dataset.dashboard;render();},'new-goal':()=>goalForm(),
   'remove-goal':el=>confirm('Excluir meta?','O histórico das oportunidades será preservado.',()=>mutate(next=>{next.goals=next.goals.filter(g=>g.id!==el.dataset.id);},'Meta excluída.')),
   'new-member':()=>showDialog('Adicionar responsável local',`<div class="form-grid">${field('name','Nome','','text',true,'required maxlength="100"')}${field('email','Email de referência','','email',true,'required')}</div><p class="help-text">Não cria login e não envia convite. Este cadastro serve apenas para atribuir responsáveis na demonstração.</p>`,values=>mutate(next=>{if(!values.name.trim())throw new Error('Informe o nome.');if((next.team||[]).some(m=>m.name===values.name.trim()))throw new Error('Este responsável já está cadastrado.');next.team ||= [];next.team.push({id:D.uid(),name:values.name.trim(),email:values.email});},'Responsável local adicionado.')),

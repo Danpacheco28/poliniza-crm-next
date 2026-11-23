@@ -321,3 +321,6 @@ O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais 
 
 ## Escopo corrigido pelo usuário — 22/11/2026
 O formulário público voltou ao formato anterior, sem CNPJ ou dados cadastrais empresariais adicionais. CNPJ e Buscar empresa ficam somente no cadastro manual de contatos e oportunidades. Dados da empresa na oportunidade são editáveis, persistem no próprio negócio e não sobrescrevem o contato vinculado. A empresa aparece no card e pode existir sem contato vinculado. Registros anteriores de empresa foram preservados.
+
+### Atividades unificadas — 23/11/2026
+Uma entrada Atividades, com calendário/lista e filtros compartilhados por pipeline, status, responsável e tipo. Mês com dois cartões/dia e abertura do dia para excesso; semana/dia para agenda detalhada. No celular, agenda vertical para preservar leitura. Títulos 14px no mês desktop e 16px no celular, sem reduzir tipografia para caber. Cor identifica tipo (ligação azul, WhatsApp verde, email âmbar, reunião púrpura, proposta coral, demais cinza); status sempre escrito. Link legado #calendario redireciona para a visualização calendário em #atividades. Lista conserva todas as datas. Dados, autenticação e integrações preservados.
