@@ -26,7 +26,15 @@ export async function handleUsers(request,admin){
    if(saved.error)return reply(503,{error:'Senha alterada, mas o acesso não foi liberado. Entre novamente e tente concluir a troca.'});
    return reply(200,{changed:true});
   }
-  if(input.action!=='create'||membership.data.role!=='admin'||membership.data.must_change_password)return reply(403,{error:'Somente administradores criam usuários.'});
+  if(!['create','reset_password'].includes(input.action)||membership.data.role!=='admin'||membership.data.must_change_password)return reply(403,{error:'Somente administradores criam usuários.'});
+  if(input.action==='reset_password'){
+   const id=String(input.id||'');if(!/^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(id)||id===actor)return reply(400,{error:'Selecione outro usuário ativo. Para sua conta, use Alterar minha senha.'});
+   const gate=await admin.rpc('crm_require_password_change',{p_actor:actor,p_user:id});
+   if(gate.error)return reply(403,{error:'Não foi possível autorizar a redefinição. Confira se o usuário está ativo e atualize a lista.'});
+   const changed=await admin.auth.admin.updateUserById(id,{password});
+   if(changed.error)return reply(400,{error:'Não foi possível definir a senha inicial. Escolha outra senha forte e tente novamente.'});
+   return reply(200,{reset:true});
+  }
   const name=String(input.name||'').trim(),email=String(input.email||'').trim().toLowerCase(),role=input.role;
   if(!name||name.length>120||email.length>254||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!['admin','member'].includes(role))return reply(400,{error:'Informe nome, email válido e perfil de acesso.'});
   const created=await admin.auth.admin.createUser({email,password,email_confirm:true,user_metadata:{display_name:name}});
