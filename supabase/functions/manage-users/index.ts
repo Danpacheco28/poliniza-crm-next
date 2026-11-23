@@ -13,7 +13,8 @@ export async function handleUsers(request,admin){
   const auth=await admin.auth.getUser(token);if(auth.error||!auth.data?.user)return reply(401,{error:'Sessão inválida. Entre novamente.'});
   const actor=auth.data.user.id;
   const membership=await admin.from('crm_members').select('role,active,must_change_password').eq('user_id',actor).maybeSingle();
-  if(membership.error||!membership.data?.active)return reply(403,{error:'Seu acesso não está ativo.'});
+  if(membership.error)return reply(503,{error:'Não foi possível verificar seu acesso no servidor. Tente novamente mais tarde.'});
+  if(!membership.data?.active)return reply(403,{error:'Seu acesso não está ativo.'});
   const raw=await request.text();if(raw.length>16000)return reply(400,{error:'Conteúdo excede o limite.'});
   let input;try{input=JSON.parse(raw);}catch{return reply(400,{error:'Dados inválidos.'});}
   const password=typeof input.password==='string'?input.password:'';

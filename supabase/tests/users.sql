@@ -10,7 +10,10 @@ do $$declare denied boolean:=false;begin
  if not denied then raise exception 'First access read commercial records';end if;
 end$$;
 reset role;
+set local role service_role;
+do $$begin if not has_table_privilege('service_role','public.crm_members','select') or not has_column_privilege('service_role','public.crm_members','must_change_password','update') then raise exception 'Account handler lacks server grants';end if;end$$;
 update public.crm_members set must_change_password=false where user_id='92929292-9292-4292-8292-929292929292';
+reset role;
 set local role authenticated;
 do $$declare denied boolean:=false;begin
  if not public.crm_is_member() or public.crm_is_admin() then raise exception 'Member access failed';end if;
