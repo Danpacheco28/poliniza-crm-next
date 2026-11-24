@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {handleUsers} from '../supabase/functions/manage-users/index.ts';
+import {readFile} from 'node:fs/promises';
+// This Edge Function contains plain JavaScript; load its exact source as ESM
+// so tests also run on distribution builds without native TypeScript loading.
+const usersSource=await readFile(new URL('../supabase/functions/manage-users/index.ts',import.meta.url),'utf8');
+const {handleUsers}=await import('data:text/javascript;base64,'+Buffer.from(usersSource).toString('base64'));
 function fixture({role='admin',active=true,must=false,registrationError=null,membershipError=null}={}){const calls=[];const db={auth:{getUser:async token=>token==='synthetic-valid'?{data:{user:{id:'actor'}},error:null}:{data:{user:null},error:{}},admin:{createUser:async input=>{calls.push(['create',input]);return{data:{user:{id:'new-user'}},error:null};},deleteUser:async id=>{calls.push(['delete',id]);return{error:null};},updateUserById:async(id,input)=>{calls.push(['password',id,input]);return{error:null};}}},from:()=>({select(){return this;},eq(){return this;},maybeSingle:async()=>({data:{role,active,must_change_password:must},error:membershipError}),update(){return{eq:async()=>({error:null})};}}),rpc:async(name,input)=>{calls.push(['rpc',name,input]);return{error:registrationError};}};return{db,calls};}
 function request(body,token='synthetic-valid',origin='https://danpacheco28.github.io'){return new Request('https://example.invalid/functions/v1/manage-users',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});}
 const input={action:'create',name:'Synthetic User',email:'synthetic@example.invalid',password:'synthetic-password-only',role:'member'};
